@@ -1,8 +1,6 @@
 const express= require('express')
 const router = express.Router()
-const City = require('../model/City');
 const User = require('../model/User');
-const please =require('../model/Place');
 const Image =require('../model/Image')
 router.use(express.json());
 
