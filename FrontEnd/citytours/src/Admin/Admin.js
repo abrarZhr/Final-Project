@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import '../Admin/Admin.css'
 
 
@@ -9,10 +10,10 @@ const Admin = () =>{
     const [city , setcity] = useState([])
     const [enableEdit, setEnabeEdit] = useState(false)
     const [idEdit, setIdEdit] = useState()
- 
+    const{cityp}=useParams() 
     useEffect(() => {
    
-        axios.get('http://localhost:5000/app/admin/getCity')
+        axios.get('http://localhost:5000/app/admin/city/'+cityp)
         .then ((res)=>{
             console.log(res.data)
             setcity(res.data)
@@ -83,24 +84,24 @@ const Admin = () =>{
              <div>
 
 
-{city.map((ele)=>(
+{/* {city.map((ele)=>( */}
 <div id="carouselExampleSlidesOnly" 
 className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
 
-      <img src={ele.BigImage} className="d-block w-100" alt="..."/>
+      {/* <img src={ele.BigImage} className="d-block w-100" alt="..."/> */}
       <div className="text">
-      <h5>Riyadh</h5>
+      <h5>{city.name}</h5>
         </div>
     </div>
   </div>
 
 </div>
-))
-}
+{/* ))
+} */}
 
-<div className="Card">
+{/* <div className="Card">
     {city.map((ele)=>(
         <div className="ImageHome">
         <img src={ele.centerImage} height={500} width={500}></img>
@@ -108,7 +109,7 @@ className="carousel slide" data-bs-ride="carousel">
         <img src={ele.trendImage} height={500} width={500}></img>
 </div>
     ))}
-</div>
+</div> */}
 
 
 

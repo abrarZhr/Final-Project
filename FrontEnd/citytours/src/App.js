@@ -9,9 +9,9 @@ import Admin from "./Admin/Admin"
 function App() {
   return(
     <>
-    <Home/>
     <Routes>
-    <Route path='/Admin' element={<Admin />} />
+    <Route exact path='/' element={<Home />} />
+    <Route path='/Admin/:cityp' element={<Admin />} />
     </Routes>
     </>
 
