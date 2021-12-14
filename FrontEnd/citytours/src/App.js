@@ -8,8 +8,11 @@ import Admin from "./Admin/Admin"
 
 function App() {
   return(
+    
     <>
+   
     <Routes>
+    {/* <Route path='/NavBar' element={<NavBar/>}/> */}
     <Route exact path='/' element={<Home />} />
     <Route path='/Admin/:cityp' element={<Admin />} />
     </Routes>

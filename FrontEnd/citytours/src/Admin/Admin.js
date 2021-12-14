@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import '../Admin/Admin.css'
+import NavBar from '../Component/NavBar';
+
 
 
 
@@ -83,14 +85,14 @@ const Admin = () =>{
          return(
              <div>
 
+<NavBar/>
 
-{/* {city.map((ele)=>( */}
 <div id="carouselExampleSlidesOnly" 
 className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
 
-      {/* <img src={ele.BigImage} className="d-block w-100" alt="..."/> */}
+      <img src={city.BigImage} className="d-block w-100"/>
       <div className="text">
       <h5>{city.name}</h5>
         </div>
@@ -98,18 +100,17 @@ className="carousel slide" data-bs-ride="carousel">
   </div>
 
 </div>
-{/* ))
-} */}
 
-{/* <div className="Card">
-    {city.map((ele)=>(
+
+<div className="Card">
         <div className="ImageHome">
-        <img src={ele.centerImage} height={500} width={500}></img>
-        <img src={ele.museumsImage} height={500} width={500}></img>
-        <img src={ele.trendImage} height={500} width={500}></img>
+        <img src={city.centerImage} height={500} width={500}></img>
+        <img src={city.museumsImage} height={500} width={500}></img>
+        <img src={city.trendImage} height={500} width={500}></img>
 </div>
-    ))}
-</div> */}
+</div> 
+
+
 
 
 
