@@ -1,8 +1,13 @@
+// import {Modal} from '@restart/ui/esm/Modal';
 import axios from 'axios';
+import { Modal } from 'react-bootstrap';
+import Button from '@restart/ui/esm/Button';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import '../Admin/Admin.css'
-import NavBar from '../Component/NavBar';
+import NavBar from '../NavBar/NavBar';
+import AddCity from '../Admin/AddCity';
+
 
 
 
@@ -12,7 +17,13 @@ const Admin = () =>{
     const [city , setcity] = useState([])
     const [enableEdit, setEnabeEdit] = useState(false)
     const [idEdit, setIdEdit] = useState()
-    const{cityp}=useParams() 
+    const{cityp}=useParams()
+ 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     useEffect(() => {
    
         axios.get('http://localhost:5000/app/admin/city/'+cityp)
@@ -83,7 +94,7 @@ const Admin = () =>{
 
         
          return(
-             <div>
+             <>
 
 <NavBar/>
 
@@ -104,40 +115,43 @@ className="carousel slide" data-bs-ride="carousel">
 
 <div className="Card">
         <div className="ImageHome">
-        <img src={city.centerImage} height={500} width={500}></img>
-        <img src={city.museumsImage} height={500} width={500}></img>
-        <img src={city.trendImage} height={500} width={500}></img>
+        <img src={city.centerImage} height={500} width={400}></img>
+        <img src={city.museumsImage} height={500} width={400}></img>
+        <img src={city.trendImage} height={500} width={400}></img>
 </div>
 </div> 
 
+<div className="table-title">
+    <div className="row">
+        <div className="col-sm-6">
+        </div>
+        <div className="col-sm-6">
+            <Button onClick={handleShow} className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i><span>add new city</span></Button>
+        </div>
+    </div>
+</div>
+<Modal show={show} onHide={handleClose}>
+    <Modal.Header>
+    <Modal.Title>
+    Add New City
+    </Modal.Title>
 
+        <Modal.Body>
+        <AddCity/>
 
+        </Modal.Body>
+        <Modal.Footer>
 
-
-
-
-
-
-
-             
+        </Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+            close Button
+        </Button>
+    </Modal.Header>
+</Modal>     
        
 {/*----------------------------------------------- */}
 
-             </div>
+             </>
          )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 export default Admin 

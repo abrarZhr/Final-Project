@@ -1,12 +1,13 @@
 .Card{
-   padding: auto;
-   margin: auto;
-}
+   padding: 10px;
+   margin: 10px;
 
+}
+.ImageHome img{
+    margin:10px;
+  
+}
 .Card .ImageHome{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 30px;
-    margin: 30px;
-    margin-left: 40px;
 }

@@ -1,21 +1,27 @@
-// import Form from 'react-bootstrap';
-import Form from '@restart/ui/esm/bootstrap';
-import Button from '@restart/ui/esm/Button';
+import {Form,Button} from 'react-bootstrap';
 
+const AddCity = () =>{
+
+    return(
 <Form>
     <Form.Group>
-        <Form.control 
-        type="text"
+        <Form.Control animation="glow"
+        type="text" 
         placeholder="Name"
         required
         />
          </Form.Group>
          <Form.Group>
-        <Form.control 
-        type="image"
+        <Form.Control 
+        type="text"
         placeholder=""
         required
         />
     </Form.Group>
-    <Button variant="success" type="submit" block>Add New C</Button>
+    <Button variant="success" type="submit" block>Add New City </Button>
 </Form>
+    )
+}
+
+export default AddCity
+

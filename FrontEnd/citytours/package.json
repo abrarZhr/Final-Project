@@ -14,12 +14,14 @@
     "components": "^0.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
+    "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
     "style": "^0.0.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2" 
+    
   },
   "scripts": {
     "start": "react-scripts start",
