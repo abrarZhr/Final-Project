@@ -27,21 +27,16 @@
 
   .Form {
    display: flex;
+   flex-direction: column;
    flex-wrap: wrap;
+
 }
 input{
    flex:1;
    min-width: 40%;
-   margin: 20px 10px 0px 0px;
-
 }
-.Form button{
-    width: 100px;
-    border: none;
-    padding: 10px 10px;
-    margin: 10px;
-    background-color:rgb(95, 176, 243);
-    color: white ;
-    cursor: pointer;
 
+
+.bu{
+    text-align: center;
 }
