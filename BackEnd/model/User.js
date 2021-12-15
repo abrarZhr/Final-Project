@@ -29,5 +29,13 @@ const UserSchema = new Schema({
     images :[Image]
 
 })
+
+
+//fire a function after doc saved ti db 
+UserSchema.post('save', function (doc , next){
+    console.log('new user was create & saved' ,doc);
+    next(); 
+    
+    })
 const User = mongoose.model('user',UserSchema);
 module.exports=User;
