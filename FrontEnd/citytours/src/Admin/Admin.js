@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import '../Admin/Admin.css'
 import NavBar from '../NavBar/NavBar';
-import AddCity from '../Admin/AddCity';
+
 
 
 
@@ -120,34 +120,7 @@ className="carousel slide" data-bs-ride="carousel">
         <img src={city.trendImage} height={500} width={400}></img>
 </div>
 </div> 
-
-<div className="table-title">
-    <div className="row">
-        <div className="col-sm-6">
-        </div>
-        <div className="col-sm-6">
-            <Button onClick={handleShow} className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i><span>add new city</span></Button>
-        </div>
-    </div>
-</div>
-<Modal show={show} onHide={handleClose}>
-    <Modal.Header>
-    <Modal.Title>
-    Add New City
-    </Modal.Title>
-
-        <Modal.Body>
-        <AddCity/>
-
-        </Modal.Body>
-        <Modal.Footer>
-
-        </Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-            close Button
-        </Button>
-    </Modal.Header>
-</Modal>     
+   
        
 {/*----------------------------------------------- */}
 

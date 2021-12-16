@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import ADDUsar from './AddUsar';
 
 
 
@@ -21,7 +22,7 @@ const User = () =>{
 
           //addimage
 
-        //   const addCity= (e) =>{
+        //   const addImage= (e) =>{
               
         //     e.preventDefault()
         //     axios.post(`http://localhost:5000/app/user/CreatePic/${addImage}` , {
@@ -50,6 +51,39 @@ const User = () =>{
     
         //     })
         // }
+
+        return(
+          <>
+          
+<div className="table-title">
+    <div className="row">
+        <div className="col-sm-6">
+        </div>
+        <div className="col-sm-6">
+            <Button onClick={handleShow} className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i><span>add new city</span></Button>
+        </div>
+    </div>
+</div>
+<Modal show={show} onHide={handleClose}>
+    <Modal.Header>
+    <Modal.Title>
+    Add New City
+    </Modal.Title>
+
+        <Modal.Body>
+        <ADDUsar/>
+
+        </Modal.Body>
+        <Modal.Footer>
+
+        </Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+            close Button
+        </Button>
+    </Modal.Header>
+</Modal>  
+          </>
+        )
 
 
 

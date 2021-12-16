@@ -18,7 +18,6 @@ const Register = () => {
     const navigate=useNavigate();
 
       const register= (e) => {
-          console.log("ooooo")
           e.preventDefault()
           axios
           .post('http://localhost:5000/singup',{

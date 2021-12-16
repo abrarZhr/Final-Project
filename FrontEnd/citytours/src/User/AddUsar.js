@@ -1,6 +1,6 @@
 import {Form,Button} from 'react-bootstrap';
 
-const AddCity = () =>{
+const AddUser = () =>{
 
     return(
 <Form>
@@ -23,5 +23,5 @@ const AddCity = () =>{
     )
 }
 
-export default AddCity
+export default AddUser
 
