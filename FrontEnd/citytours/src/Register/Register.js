@@ -7,15 +7,18 @@ import Col  from 'react-bootstrap/Col';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import jwt from "jwt-decode";
 
 
 const Register = () => {
-
+  
+    const getLocalStorage = localStorage.getItem("token")
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
     const navigate=useNavigate();
 
       const register= (e) => {
+          console.log("ooooo")
           e.preventDefault()
           axios
           .post('http://localhost:5000/singup',{
@@ -24,7 +27,18 @@ const Register = () => {
       })
           .then((res) => {
               console.log(res)
-              navigate("/LogIn");
+                   if (res.data.errors) {
+            }
+            if (res.data) {
+              console.log(res.data)
+              const token = res.data.token;
+              console.log(token)
+              const authorSign = jwt(token); // decode your token here
+             
+             localStorage.setItem("token", token);
+             navigate("/LogIn");
+
+            }
 
             }
             )
@@ -37,9 +51,7 @@ const Register = () => {
         <h1>CREATE AN ACCOUNT</h1>
 
         <div className="Form">
-        <label>Email</label>
         <input onChange={(e)=> {setEmail(e.target.value)}} placeholder="Email"></input>
-        <label>Password</label>
         <input onChange={(e)=> {setPassword(e.target.value)}} placeholder="Password"></input>
         
     <fieldset>
@@ -71,7 +83,7 @@ const Register = () => {
     
         <Button variant="outline-info" onClick = {(e)=>{register(e)}}>CREATE</Button>{' '}
         
-        <Button variant="outline-info" onClick = {(e)=>{register(e)}}>Log in</Button>{' '}
+        <Button variant="outline-info" Link to="./LogIn" >Log in</Button>{' '}
         </div>
         
         </div>
