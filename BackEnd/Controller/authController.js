@@ -46,18 +46,15 @@ const createToken = (id, email) => {
 module.exports.singup = async (req , res)=>{
     const {email , password , UserType } = req.body;
 
-    // const salt = await bcrypt.genSalt(10);
-    // const hashPassword = await bcrypt.hash(password , salt )
-
     try{
      const newUser = await User.create({
          email,
          password,
          UserType 
      })
-     const token = createToken(newUser._id, newUser.email);
+     const token = createToken(newUser._id, newUser.email , newUser.UserType);
     //  const user = await newUser.save() 
-     res.status(200).json({user:newUser,token:token})
+     res.status(200).json({user:token})
 
     }
     catch(err){
@@ -67,23 +64,16 @@ module.exports.singup = async (req , res)=>{
 }
 
 module.exports.login = async (req, res) => {
-    const {email , password}=req.body;
+    const {email , password }=req.body;
 
     try {
 
         // check the email in DB
         const user = await User.login({ email ,password});
 
-        // if 
-        // !user && res.status(400).json("Error")
-
-        // Check the password and hash
-        // const vPassword = await bcrypt.compare(password, user.password)
-        // !vPassword && res.status(400).json("Error")
-
-
-        const token = createToken(user._id, user.email);
-        res.status(200).json({user:user,token:token})
+    
+        const token = createToken(user._id, user.email , user.UserType);
+        res.status(200).json({user:token})
     } catch (err) {
         const errors = handlErrors(err)
         res.status(400).json({ errors });

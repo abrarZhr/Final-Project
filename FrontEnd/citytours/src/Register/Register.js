@@ -15,27 +15,30 @@ const Register = () => {
     const getLocalStorage = localStorage.getItem("token")
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
+    const [UserType , setUserType]=useState()
     const navigate=useNavigate();
 
       const register= (e) => {
+
           e.preventDefault()
           axios
           .post('http://localhost:5000/singup',{
               email:Email,
-              password:Password
+              password:Password,
+              UserType:UserType
       })
           .then((res) => {
               console.log(res)
                    if (res.data.errors) {
             }
-            if (res.data) {
+            if (res.data.user) {
               console.log(res.data)
               const token = res.data.token;
               console.log(token)
-              const authorSign = jwt(token); // decode your token here
-             
+              const user = jwt(token); 
+              console.log(res.data.user)
              localStorage.setItem("token", token);
-             navigate("/LogIn");
+             navigate("/");
 
             }
 
@@ -47,7 +50,7 @@ const Register = () => {
     return (
         <div className="Container">
         <div className="Wrapper">
-        <h1>CREATE AN ACCOUNT</h1>
+        <h1>SIGN UP</h1>
 
         <div className="Form">
         <input onChange={(e)=> {setEmail(e.target.value)}} placeholder="Email"></input>
@@ -65,12 +68,14 @@ const Register = () => {
           label="USER"
           name="formHorizontalRadios"
           id="formHorizontalRadios1"
+          onChange={(e)=>{setUserType("user")}}
         />
         <Form.Check
           type="radio"
           label="ADMIN"
           name="formHorizontalRadios"
           id="formHorizontalRadios2"
+          onChange={(e)=>{setUserType("admin")}}
         />
         </Col>
         </Form.Group>
@@ -81,8 +86,7 @@ const Register = () => {
     <div className="bu">
     
         <Button variant="outline-info" onClick = {(e)=>{register(e)}}>CREATE</Button>{' '}
-        
-        <Button variant="outline-info" Link to="./LogIn" >Log in</Button>{' '}
+        {/* Already have an account? */}
         </div>
         
         </div>
@@ -91,5 +95,5 @@ const Register = () => {
     
     )
 }
-      
+       
 export default Register

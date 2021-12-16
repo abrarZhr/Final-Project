@@ -1,11 +1,69 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import ADDUsar from './AddUsar';
+import jwt from "jwt-decode";
+
 
 
 
 
 const User = () =>{
+
+    let decodedData ;
+    const storedToken = localStorage.getItem("token");
+    if (storedToken){
+        decodedData = jwt_decode(storedToken, { payload: true });
+        console.log(decodedData);
+        let expirationDate = decodedData.exp;
+        var current_time = Date.now() / 1000;
+        if(expirationDate < current_time)
+        {
+            localStorage.removeItem("token");
+        }
+   }
+
+   const decode = (id) => {
+    if (decodedData != undefined){
+      console.log(decodedData);
+          if ( decodedData.typeOfUser == "user"){
+             return (
+                <div>
+                    {/* <button className='btn' onClick={(e) =>{deleteCountry(e,id)}}>Delete</button>
+                    <button className='btn' onClick={(e) => {editCountry(id)}}>Edit</button> */}
+<>
+                              
+<div className="table-title">
+    <div className="row">
+        <div className="col-sm-6">
+        </div>
+        <div className="col-sm-6">
+            <Button onClick={handleShow} className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i><span>add new city</span></Button>
+        </div>
+    </div>
+</div>
+<Modal show={show} onHide={handleClose}>
+    <Modal.Header>
+    <Modal.Title>
+    Add New City
+    </Modal.Title>
+
+        <Modal.Body>
+        <ADDUsar/>
+
+        </Modal.Body>
+        <Modal.Footer>
+
+        </Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+            close Button
+        </Button>
+    </Modal.Header>
+</Modal>  
+          </>
+                </div>
+             )}
+          }
+        }
     
     const [Idimage , setIdImage] = useState()
     const [addImage , setImage] = useState()
@@ -53,8 +111,11 @@ const User = () =>{
         // }
 
         return(
-          <>
-          
+
+
+        {decode()}
+        //   <>
+/*           
 <div className="table-title">
     <div className="row">
         <div className="col-sm-6">
@@ -82,7 +143,7 @@ const User = () =>{
         </Button>
     </Modal.Header>
 </Modal>  
-          </>
+          </> */
         )
 
 

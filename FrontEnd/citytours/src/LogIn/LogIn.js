@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 
 const LogIn = () =>{
 
+    
+
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const navigate = useNavigate();
@@ -34,7 +36,7 @@ const LogIn = () =>{
     return(
         <div className="Container">
         <div className="Wrapper">
-        <h1>CREATE AN ACCOUNT</h1>
+        <h1>SIGN IN</h1>
 
         <div className="Form">
         <input placeholder="Email"></input>
@@ -45,11 +47,10 @@ const LogIn = () =>{
         <Button variant="outline-info"  onClick = {(e)=>{login(e)}}>Log In</Button>{' '}
         </div>
 
-        {/* <div className="val">
-            <Link>DO NOT YOU REGISTER THE PASSWORD?</Link>
-            <Link>CREATE A NEW ACCOUNT</Link>
+        <div className="val">
+            <h5>Not a member yet? <Link to="/Register"> Sign Up here </Link> </h5>
         </div>
-         */}
+        
 
 
         </div>

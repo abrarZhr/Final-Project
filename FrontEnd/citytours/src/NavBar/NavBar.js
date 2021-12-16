@@ -14,7 +14,7 @@ const NavBar = () =>{
   const logout=(e)=>{
       e.preventDefault()
       localStorage.removeItem('token')
-      navigate('/login')
+      navigate('/')
   }
     return(
 <container>
@@ -32,6 +32,9 @@ const NavBar = () =>{
       </li>
       <li class="nav-item">
         <a class="nav-link" ><Link to='/login'> login</Link> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" ><Link to='/LogOut'  > <button onClick={(e)=>logout(e)}> logout</button></Link> </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,18 +59,6 @@ const NavBar = () =>{
   </div>
 </nav>
 
-{getLocalStorage ?(
-        <>
-        <Link to='/' onClick={(e)=>logout(e)}>log out</Link>
-</>
-        ) : null}
-
-        {!getLocalStorage ?(
-        <>
-        <Link to='/Register' >Register</Link> 
-        <Link to ='/LogIn'>login</Link>
-</>
-        ) : null}
 
     </div>
 </container>
