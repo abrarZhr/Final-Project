@@ -42,8 +42,9 @@ return(
       
         <div className="img"> 
         <div className="form">
-        <div className="text">
-        <h3> Welcome to </h3>
+        <div className="container">
+        <span class="text1"> Welcome to </span>
+        <span class="text2">City</span>
       
         </div>
         <select onChange={(e)=>{selectCityfun(e.target.value)}} class="form-select" aria-label="Default select example">

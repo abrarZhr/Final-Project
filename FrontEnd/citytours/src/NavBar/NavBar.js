@@ -27,15 +27,23 @@ const NavBar = () =>{
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" ><Link to='/Register'>  Register </Link><span class="sr-only">(current)</span></a>
+    {!getLocalStorage ?(
+        <>
+        <li class="nav-item active">
+        <a class="nav-link" ><Link to='/Register'> Register </Link><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" ><Link to='/login'> login</Link> </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" ><Link to='/LogOut'  > <button onClick={(e)=>logout(e)}> logout</button></Link> </a>
-      </li>
+</>
+        ) : null}
+     
+      {getLocalStorage ?(
+        <li class="nav-item">
+        <a class="nav-link" ><Link to='/LogOut'> <button onClick={(e)=>logout(e)}> logout</button></Link> </a>
+      </li> 
+        ) : null}
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
@@ -46,9 +54,6 @@ const NavBar = () =>{
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
     

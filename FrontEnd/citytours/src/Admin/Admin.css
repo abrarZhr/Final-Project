@@ -2,12 +2,30 @@
    padding: 10px;
    margin: 10px;
 
+
 }
 .ImageHome img{
-    margin:10px;
-  
+    position: relative;
+    width: 300px;
+    height: 400px;
+   
 }
+
+
+
 .Card .ImageHome{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+
+
+
+.textCity{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    font-size: bold;
 }

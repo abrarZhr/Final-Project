@@ -27,8 +27,44 @@
   flex-direction: row-reverse;
   align-items: center;
   flex-basis: 50%;
-  
-  
+}
+
+
+
+.container span{
+  text-transform: uppercase;
+  display: block;
+
+
+}
+
+.container .text1{
+  font-size: 60px;
+  font-weight: 70;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  animation: text 7s 2 ;
+    
+
+}
+
+.container .text2{
+  font-size: 30px;
+}
+
+@keyframes text{
+  0%{
+    margin-bottom: -40px;
+  }
+  30%{
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85%{
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
 }
 .parent {
   display: grid;

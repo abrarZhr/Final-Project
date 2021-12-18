@@ -36,8 +36,8 @@ const handlErrors = (err) =>{
 }
 
 const maxage = 3 * 24 * 60 * 60;
-const createToken = (id, email) => {
-    return jwt.sign({ id, email }, 'abrar secret', {
+const createToken = (id, email,UserType) => {
+    return jwt.sign({ id, email ,UserType}, 'abrar secret', {
         expiresIn: maxage
     });
 }

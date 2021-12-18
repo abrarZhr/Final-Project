@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import ADDUsar from './AddUsar';
-import jwt from "jwt-decode";
-
-
-
+import jwt_decode from "jwt-decode";
+import { Modal } from 'react-bootstrap';
+import Button from '@restart/ui/esm/Button';
 
 
 const User = () =>{
@@ -13,7 +12,6 @@ const User = () =>{
     const storedToken = localStorage.getItem("token");
     if (storedToken){
         decodedData = jwt_decode(storedToken, { payload: true });
-        console.log(decodedData);
         let expirationDate = decodedData.exp;
         var current_time = Date.now() / 1000;
         if(expirationDate < current_time)
@@ -22,10 +20,15 @@ const User = () =>{
         }
    }
 
+    
+   const [show, setShow] = useState(false);
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
+
+
    const decode = (id) => {
     if (decodedData != undefined){
-      console.log(decodedData);
-          if ( decodedData.typeOfUser == "user"){
+          if ( decodedData.UserType == "user"){
              return (
                 <div>
                     {/* <button className='btn' onClick={(e) =>{deleteCountry(e,id)}}>Delete</button>
@@ -69,18 +72,18 @@ const User = () =>{
     const [addImage , setImage] = useState()
     const [enableEdit, setEnabeEdit] = useState(false)
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/app/user/image/${Idimage}`)
-        .then ((res)=>{
-            console.log(res.data)
-            setcity(res.data)
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5000/app/user/image/${Idimage}`)
+    //     .then ((res)=>{
+    //         console.log(res.data)
+    //         setcity(res.data)
 
-        });
-          }, [])
+    //     });
+    //       }, [])
 
           //addimage
 
-        //   const addImage= (e) =>{
+        //  const addImage= (e) =>{
               
         //     e.preventDefault()
         //     axios.post(`http://localhost:5000/app/user/CreatePic/${addImage}` , {
@@ -111,9 +114,11 @@ const User = () =>{
         // }
 
         return(
+<>
 
+{decodedData?decode(decodedData.id):<></>}
+</>         
 
-        {decode()}
         //   <>
 /*           
 <div className="table-title">
@@ -143,7 +148,10 @@ const User = () =>{
         </Button>
     </Modal.Header>
 </Modal>  
-          </> */
+        </> */
+
+
+
         )
 
 

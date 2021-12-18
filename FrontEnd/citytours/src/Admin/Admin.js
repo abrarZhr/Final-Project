@@ -1,11 +1,11 @@
 // import {Modal} from '@restart/ui/esm/Modal';
 import axios from 'axios';
-import { Modal } from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
+
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import '../Admin/Admin.css'
 import NavBar from '../NavBar/NavBar';
+import User from '../User/User';
 
 
 
@@ -18,11 +18,6 @@ const Admin = () =>{
     const [enableEdit, setEnabeEdit] = useState(false)
     const [idEdit, setIdEdit] = useState()
     const{cityp}=useParams()
- 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     useEffect(() => {
    
@@ -97,15 +92,15 @@ const Admin = () =>{
              <>
 
 <NavBar/>
-
+<User/>
 <div id="carouselExampleSlidesOnly" 
 className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
 
       <img src={city.BigImage} className="d-block w-100"/>
-      <div className="text">
-      <h5>{city.name}</h5>
+      <div className="textCity">
+      <h1>{city.name}</h1>
         </div>
     </div>
   </div>

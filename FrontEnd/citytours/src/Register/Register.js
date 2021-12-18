@@ -33,12 +33,12 @@ const Register = () => {
             }
             if (res.data.user) {
               console.log(res.data)
-              const token = res.data.token;
+              const token = res.data.user;
               console.log(token)
               const user = jwt(token); 
-              console.log(res.data.user)
+              console.log(user)
              localStorage.setItem("token", token);
-             navigate("/");
+             navigate(-1)
 
             }
 
