@@ -1,14 +1,9 @@
-// import {Modal} from '@restart/ui/esm/Modal';
 import axios from 'axios';
-
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import '../Admin/Admin.css'
 import NavBar from '../NavBar/NavBar';
 import User from '../User/User';
-
-
-
 
 
 
@@ -110,7 +105,7 @@ className="carousel slide" data-bs-ride="carousel">
 
 <div className="Card">
         <div className="ImageHome">
-        <img src={city.centerImage} height={500} width={400}></img>
+     <button> <img src={city.centerImage} height={500} width={400}></img></button>  
         <img src={city.museumsImage} height={500} width={400}></img>
         <img src={city.trendImage} height={500} width={400}></img>
 </div>
