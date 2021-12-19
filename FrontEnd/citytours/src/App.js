@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import Admin from "./Admin/Admin"
 import LogIn from "./LogIn/LogIn"
 import Register from "./Register/Register"
+import Cities from './Cities/Cities';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <Routes>
     {/* <Route path='/NavBar' element={<NavBar/>}/> */}
     <Route exact path='/' element={<Home />} />
-    <Route path='/Admin/:cityp' element={<Admin />} />
+    <Route path='/Cities/:cityp' element={<Cities />} />
     <Route path='/Register' element={<Register/>}/>
     <Route path='/LogIn' element={<LogIn/>}/>
     </Routes>

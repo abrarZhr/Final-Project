@@ -1,6 +1,6 @@
 import React from "react";
 import './NavBar.css'
-import '../Admin/Admin'
+import '../Cities/Cities'
 import '../LogIn/LogIn'
 import '../LogOut/LogOut'
 import '../Register/Register'

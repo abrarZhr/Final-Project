@@ -26,7 +26,7 @@ const Home = () =>{
         function selectCityfun(city){
                 console.log(city+"cityy")
                 setselectCity(city)
-                navigate('/Admin/'+city)
+                navigate('/Cities/'+city)
 
         }
 
