@@ -190,3 +190,24 @@
 
 }
 
+/* .row{
+
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+ 
+}
+
+.row .min{
+    width: 300px;
+    height: 400px;
+    position: relative;
+    border: none;
+    border-radius: 70px 10px 70px 10px;
+
+}
+ */
+

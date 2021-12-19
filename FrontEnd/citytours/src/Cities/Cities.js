@@ -6,6 +6,18 @@ import NavBar from '../NavBar/NavBar';
 import User from '../User/User';
 import Button from 'react-bootstrap/Button'
 import { Link  } from "react-router-dom"
+import { RiPinDistanceLine } from "react-icons/ri";
+import { BsFillChatDotsFill } from "react-icons/bs";
+import { TiTick } from "react-icons/ti";
+import { GrTicket } from "react-icons/gr";
+
+
+
+
+
+
+
+
 
 const Cities = () =>{
 
@@ -150,6 +162,42 @@ className="carousel slide" data-bs-ride="carousel">
 </div>
 </div> 
 </div>
+
+
+<div className='basics'>
+<h1>basics</h1>   
+<p></p> 
+</div>
+
+<div className='row'>
+
+<div className="min">
+<h3>   <RiPinDistanceLine/>    </h3>
+        <div className="imagebox">
+        <h3>save travel</h3>
+     
+</div>
+</div>
+
+<div className="min">
+        <div className="imagebox">
+       <h3>   <BsFillChatDotsFill/>    </h3>
+</div>
+</div>
+
+<div className="min">
+        <div className="imagebox">
+       <h3>   <TiTick/>    </h3>
+</div>
+</div>
+
+<div className="min">
+        <div className="imagebox">
+       <h3>   <GrTicket/>    </h3>
+</div>
+</div>
+</div>
+
 
              </>
          )
