@@ -19,6 +19,7 @@ function App() {
     <Route exact path='/' element={<Home />} />
     <Route path='/Cities/:cityp' element={<Cities />} />
     <Route path='/Register' element={<Register/>}/>
+    <Route path='/Admin' element={<Admin/>}/>
     <Route path='/LogIn' element={<LogIn/>}/>
     </Routes>
     </>
