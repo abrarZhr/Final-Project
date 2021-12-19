@@ -10,11 +10,11 @@ const please =require('../model/Place');
 router.post('/CreateCity' , async (req , res )=>{
 
     const NewCity = new City ({
-        name:req.body.name,
-        BigImage:req.body.BigImage,
-        centerImage:req.body.centerImage,
-        museumsImage:req.body.museumsImage,
-        trendImage:req.body.trendImage,
+        name:req.body.data.name,
+        BigImage:req.body.data.BigImage,
+        centerImage:req.body.data.centerImage,
+        museumsImage:req.body.data.museumsImage,
+        trendImage:req.body.data.trendImage,
     })
     
     try {

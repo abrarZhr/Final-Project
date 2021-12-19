@@ -41,6 +41,11 @@ const Admin = () =>{
 
          const addCity= (e) =>{
             e.preventDefault()
+            console.log(nameCity)
+            console.log(bigimag)
+            console.log(center)
+            console.log(museums)
+            console.log(trend)
             axios.post('http://localhost:5000/app/admin/CreateCity' , {
                 data :{
                     name:nameCity,
@@ -150,7 +155,7 @@ const Admin = () =>{
     <Form.Control type="text" onChange={(e)=>setCityName(e.target.value)} placeholder="jeddah" />
   </FloatingLabel>
 
-  <FloatingLabel controlId="floatingimage" label="image">
+  <FloatingLabel controlId="floatingimage" label="bigImage">
 
     <Form.Control type="text" onChange={(e)=>setbig(e.target.value)} placeholder="image" />
   </FloatingLabel>

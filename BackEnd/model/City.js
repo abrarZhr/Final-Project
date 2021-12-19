@@ -25,8 +25,10 @@ const CitySchema = new Schema({
 
     trendImage :{
         type:String,
-        required:[true , "Image for Markts shold be provided"]
+        // required:[true , "Image for Markts shold be provided"]
     },
+
+    
 
     places:[Place]
 
