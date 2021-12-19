@@ -50,37 +50,37 @@ const Admin = () =>{
 
          }
 
-        //  //update
-        //  function EditCity(_id) {
+         //update
+         function EditCity(_id) {
              
-        //     setIdEdit(_id)
-        //     setEnabeEdit(true)
-        //  }
-        //  function saveEdith(e){
-        //   e.preventDefault
-        //     axios.put(`http://localhost:5000/app/admin/${idEdit}`,
-        //         {
-        //             data:
-        //             {
-        //                 name:e.target.form[0].value,
-        //                 BigImage:e.target.form[1].value,
-        //                 centerImage:e.target.form[2].value,
-        //                 museumsImage:e.target.form[3].value,
-        //                 trendImage:e.target.form[4].value
+            setIdEdit(_id)
+            setEnabeEdit(true)
+         }
+         function saveEdith(e){
+         e.preventDefault()
+            axios.put(`http://localhost:5000/app/admin/${idEdit}`,
+                {
+                    data:
+                    {
+                        name:e.target.form[0].value,
+                        BigImage:e.target.form[1].value,
+                        centerImage:e.target.form[2].value,
+                        museumsImage:e.target.form[3].value,
+                        trendImage:e.target.form[4].value
     
-        //             }
-        //         })
-        //         .then((res) => {
-        //             setcity(res.data);
-        //         });
-        //     setEnabeEdit(false)
-        // }
+                    }
+                })
+                .then((res) => {
+                    setcity(res.data);
+                });
+            setEnabeEdit(false)
+        }
 
-        // //deleteCity
+        //deleteCity
 
         const deleteCity = (e, _id) => {
             e.preventDefault()
-            axios.delete(`http://localhost:5000//app/admin/deleteCity/${_id}`)
+            axios.delete(`http://localhost:5000/app/admin/deleteCity/${_id}`)
             .then((res) => {
                 setcity(res.data);
     
@@ -118,6 +118,8 @@ className="carousel slide" data-bs-ride="carousel">
    
        
 {/*----------------------------------------------- */}
+
+
 
              </>
          )
