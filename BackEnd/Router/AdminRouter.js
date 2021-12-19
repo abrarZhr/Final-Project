@@ -28,6 +28,17 @@ router.post('/CreateCity' , async (req , res )=>{
     console.log("Add");
 } )
 
+//getPlease
+router.get('/getPlease/:id' , async(req , res)=>{
+  try{
+    City.findById({_id:req.params.id}).then((city)=>{
+      res.send(city.places)
+    })
+  }catch{
+    res.status(500).send()
+  }
+})
+
 //router for pleace 
 router.post('/CreatePleace/:id' , async (req , res )=>{
     const _id = req.params.id;
@@ -52,16 +63,7 @@ router.post('/CreatePleace/:id' , async (req , res )=>{
     console.log("Add");
 } )
 
-//getPlease
-router.get('/getPlease/:id' , async(req , res)=>{
-  try{
-    City.findById({_id:req.params.id}).then((city)=>{
-      res.send(city.places)
-    })
-  }catch{
-    res.status(500).send()
-  }
-})
+
 
 
 
