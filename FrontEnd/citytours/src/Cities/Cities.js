@@ -169,34 +169,54 @@ className="carousel slide" data-bs-ride="carousel">
 <p></p> 
 </div>
 
+
+
+
+
+
+
 <div className='row'>
+    <div className='Card'>
+    <h2>   <RiPinDistanceLine/>    </h2>
+    <div className='conttener box1'>
+        <h3> save travel</h3>
+        {/* <ul>
+            <li><a href=''></a></li>
+        </ul> */}
+    </div>
+    </div>
 
-<div className="min">
-<h3>   <RiPinDistanceLine/>    </h3>
-        <div className="imagebox">
-        <h3>save travel</h3>
-     
-</div>
-</div>
+    <div className='Card '>
+    <h2>   <BsFillChatDotsFill/>    </h2>
+    <div className='conttener box2'>
+        <h3> save travel</h3>
+        {/* <ul>
+            <li><a href=''></a></li>
+        </ul> */}
+    </div>
+    </div>
 
-<div className="min">
-        <div className="imagebox">
-       <h3>   <BsFillChatDotsFill/>    </h3>
-</div>
-</div>
+    <div className='Card'>
+    <h2>   <TiTick/>    </h2>
+    <div className='conttener box3'>
+        <h3> save travel</h3>
+        {/* <ul>
+            <li><a href=''></a></li>
+        </ul> */}
+    </div>
+    </div>
 
-<div className="min">
-        <div className="imagebox">
-       <h3>   <TiTick/>    </h3>
+    <div className='Card'>
+    <h2>   <GrTicket/>    </h2>
+    <div className='conttener box4'>
+        <h3> save travel</h3>
+        {/* <ul>
+            <li><a href=''></a></li>
+        </ul> */}
+    </div>
+    </div>
 </div>
-</div>
-
-<div className="min">
-        <div className="imagebox">
-       <h3>   <GrTicket/>    </h3>
-</div>
-</div>
-</div>
+      
 
 
              </>
