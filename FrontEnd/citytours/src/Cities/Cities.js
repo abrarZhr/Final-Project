@@ -10,14 +10,7 @@ import { RiPinDistanceLine } from "react-icons/ri";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
 import { GrTicket } from "react-icons/gr";
-
-
-
-
-
-
-
-
+import { Footer } from '../Footer/Footer';
 
 const Cities = () =>{
 
@@ -208,6 +201,7 @@ className="carousel slide" data-bs-ride="carousel">
     </div>
 
 </div>
+<Footer></Footer>
              </>
          )
 }

@@ -52,7 +52,7 @@ const Register = () => {
         <div className="Wrapper">
         <h1>SIGN UP</h1>
 
-        <div className="Form">
+        <div className="Form"> 
         <Form>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>

@@ -7,7 +7,7 @@ import Admin from "./Admin/Admin"
 import LogIn from "./LogIn/LogIn"
 import Register from "./Register/Register"
 import Cities from './Cities/Cities';
-import "./App.css"
+import { Footer } from './Footer/Footer';
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
     <Route path='/Admin' element={<Admin/>}/>
     <Route path='/LogIn' element={<LogIn/>}/>
     <Route path='/userSetting' element={<userSetting/>}/>
+    <Route path='/Footer' element={<Footer/>}/>
     </Routes>
     </>
 

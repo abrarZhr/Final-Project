@@ -31,8 +31,7 @@ const User = () =>{
           if ( decodedData.UserType == "user"){
              return (
                 <div>
-                    {/* <button className='btn' onClick={(e) =>{deleteCountry(e,id)}}>Delete</button>
-                    <button className='btn' onClick={(e) => {editCountry(id)}}>Edit</button> */}
+                    
 <>
                               
 <div className="table-title">

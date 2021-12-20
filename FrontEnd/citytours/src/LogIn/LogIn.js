@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt from "jwt-decode";
+import Form  from 'react-bootstrap/Form';
 
 
 
@@ -43,8 +44,19 @@ const LogIn = () =>{
         <h1>SIGN IN</h1>
 
         <div className="Form">
-        <input onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email"></input>
-        <input type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password"></input>
+        <Form>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control onChange={(e)=>{setEmail(e.target.value)}} type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" onChange={(e)=>{setPassword(e.target.value)}} type="password" placeholder="Password" />
+  </Form.Group>
+</Form>
 
         
         <div className="bu">
@@ -54,6 +66,8 @@ const LogIn = () =>{
         <div className="val">
             <h5>Not a member yet? <Link to="/Register"> Sign Up here </Link> </h5>
         </div>
+
+        
         
 
 
