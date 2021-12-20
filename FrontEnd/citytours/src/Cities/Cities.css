@@ -148,7 +148,7 @@
     font-weight: normal;
     font-size: 40px;
     position: relative;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
     text-transform: uppercase;
 
 }
@@ -200,6 +200,7 @@
     align-items: center;
     flex-wrap: wrap;
 
+
 }
 
 .row .Card{
@@ -212,7 +213,8 @@
     overflow: hidden;
     cursor: pointer;
     margin: 10px 5px;
-    background-color: rgb(226, 220, 220)
+    background-color: rgb(226, 220, 220);
+   
 
 }
 
@@ -220,9 +222,7 @@
 
     width: 100%;
     text-align: center;
-    color:black;
-   
-
+    color:rgb(233, 150, 72);
 }
 
 .row .Card .conttener{
@@ -231,7 +231,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    display: grid;
+    display:grid;
     place-content: center;
     text-align: center;
     background: linear-gradient(45deg,rgb(212, 239, 248),rgba(250, 244, 244, 0.686));
@@ -283,10 +283,6 @@
 
 .row .Card .conttener h3:hover{
     transform: translateY(-10px);
-}
-
-.basics{
-   
 }
 
 

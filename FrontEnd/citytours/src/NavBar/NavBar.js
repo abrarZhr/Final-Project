@@ -35,6 +35,7 @@ const NavBar = () =>{
       <li class="nav-item">
         <a class="nav-link" ><Link to='/login'> login</Link> </a>
         <a class="nav-link" ><Link to='/Admin'> Admin</Link> </a>
+        <a class="nav-link" ><Link to='/userSetting'> user</Link> </a>
       </li>
 </>
         ) : null}

@@ -8,10 +8,97 @@ import User from '../User/User';
 import Button from 'react-bootstrap/Button'
 import { Link  } from "react-router-dom"
 import { useForm } from "react-hook-form";
+import jwt_decode from "jwt-decode";
 
 
 const Admin = () =>{
 
+  
+  let decodedData ;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken){
+      decodedData = jwt_decode(storedToken, { payload: true });
+      let expirationDate = decodedData.exp;
+      var current_time = Date.now() / 1000;
+      if(expirationDate < current_time)
+      {
+          localStorage.removeItem("token");
+      }
+ }
+
+ 
+ const decode = (id) => {
+  if (decodedData != undefined){
+        if ( decodedData.UserType == "admin"){
+           return (
+              <div>
+
+                     <NavBar></NavBar>
+                   <Button variant="primary" onClick={() => setModalShow(true)}>
+        Launch vertically centered modal
+      </Button>
+
+                    <Modal
+        show={modalShow}
+
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+
+    
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          add new City
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+
+      <>
+  <FloatingLabel
+    controlId="floatingInput"
+    label="name"
+    className="mb-3"
+  >
+    <Form.Control type="text" onChange={(e)=>setCityName(e.target.value)} placeholder="jeddah" />
+  </FloatingLabel>
+
+  <FloatingLabel controlId="floatingimage" label="bigImage">
+
+    <Form.Control type="text" onChange={(e)=>setbig(e.target.value)} placeholder="image" />
+  </FloatingLabel>
+
+  <FloatingLabel controlId="floatingimage" label="image">
+  <Form.Control type="text" onChange={(e)=>setcenter(e.target.value)} placeholder="center" />
+
+  </FloatingLabel>
+
+  <FloatingLabel controlId="floatingimage" label="image">
+  <Form.Control type="text" onChange={(e)=>setmuseums(e.target.value)} placeholder="museum" />
+
+  </FloatingLabel>
+  <FloatingLabel controlId="floatingimage" label="image">
+  <Form.Control type="text" onChange={(e)=>setTrend(e.target.value)} placeholder="image" />
+
+  </FloatingLabel>
+</>
+
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={(e)=>addCity (e)}>add</Button>
+        <Button onClick={()=> setModalShow(false)}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+
+<div>
+
+
+</div>
+              </div>
+
+)}
+}
+}
     const [city , setcity] = useState([])
     const [enableEdit, setEnabeEdit] = useState(false)
     const [idEdit, setIdEdit] = useState()
@@ -126,70 +213,9 @@ const Admin = () =>{
     
                 return (
                   <>
-                   <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
-      </Button>
 
-                    <Modal
-        show={modalShow}
-
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-
-    
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          add new City
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-
-      <>
-  <FloatingLabel
-    controlId="floatingInput"
-    label="name"
-    className="mb-3"
-  >
-    <Form.Control type="text" onChange={(e)=>setCityName(e.target.value)} placeholder="jeddah" />
-  </FloatingLabel>
-
-  <FloatingLabel controlId="floatingimage" label="bigImage">
-
-    <Form.Control type="text" onChange={(e)=>setbig(e.target.value)} placeholder="image" />
-  </FloatingLabel>
-
-  <FloatingLabel controlId="floatingimage" label="image">
-  <Form.Control type="text" onChange={(e)=>setcenter(e.target.value)} placeholder="center" />
-
-  </FloatingLabel>
-
-  <FloatingLabel controlId="floatingimage" label="image">
-  <Form.Control type="text" onChange={(e)=>setmuseums(e.target.value)} placeholder="museum" />
-
-  </FloatingLabel>
-  <FloatingLabel controlId="floatingimage" label="image">
-  <Form.Control type="text" onChange={(e)=>setTrend(e.target.value)} placeholder="image" />
-
-  </FloatingLabel>
-</>
-
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={(e)=>addCity (e)}>add</Button>
-        <Button onClick={()=> setModalShow(false)}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-
-<div>
-
-
-</div>
-  
-
-
-
+{decodedData?decode(decodedData.id):<></>}
+          
                   </>
                 );
                 }

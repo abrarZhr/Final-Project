@@ -164,9 +164,11 @@ className="carousel slide" data-bs-ride="carousel">
 </div>
 
 
-<div className='basics'>
+<div className='section'>
+<div className="main-heading">
 <h1>basics</h1>   
 <p>Plan your trip now for an experience full of vitality and beauty</p> 
+</div>
 </div>
 
 
