@@ -71,46 +71,48 @@ const User = () =>{
     const [addImage , setImage] = useState()
     const [enableEdit, setEnabeEdit] = useState(false)
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/app/user/image/${Idimage}`)
-    //     .then ((res)=>{
-    //         console.log(res.data)
-    //         setcity(res.data)
 
-    //     });
-    //       }, [])
+    const [City , setCity] = useState()
+    const [imges, setimges] = useState()
+    const [description, setdescription] = useState()
 
-          //addimage
+    useEffect(() => {
+        axios.get(`http://localhost:5000/app/user/image/${Idimage}`)
+        .then ((res)=>{
+            console.log(res.data)
+            setCity(res.data)
 
-        //  const addImage= (e) =>{
-              
-        //     e.preventDefault()
-        //     axios.post(`http://localhost:5000/app/user/CreatePic/${addImage}` , {
-        //         data :{
-        //             name:e.target.form[0].value,
-        //             BigImage:e.target.form[1].value,
-        //             centerImage:e.target.form[2].value,
-        //             museumsImage:e.target.form[3].value,
-        //             trendImage:e.target.form[4].value
+        })
+          }, [])
 
-        //         }
-        //     })
-        //     .then((res)=>{
-        //         setcity(res.data)
-        //     })
+          
 
-        //  }
 
-        //    //deleteimage
 
-        // const deleteimage  = (e, _id) => {
-        //     e.preventDefault()
-        //     axios.delete(`http://localhost:5000//app/admin/deleteCity/${_id}`)
-        //     .then((res) => {
-        //         setcity(res.data);
+         const addImage1 = (e) =>{
+              e.preventDefault()
+            axios.post(`http://localhost:5000/app/user/CreatePic/${addImage}` , {
+                data :{
+                    Image:imges,
+                    description:description
+                }
+            })
+            .then((res)=>{
+                setCity(res.data)
+            })
+
+         }
+
+           //deleteimage
+
+        const deleteimage  = (e, _id) => {
+            e.preventDefault()
+            axios.delete(`http://localhost:5000//app/user/deleteCity/${_id}`)
+            .then((res) => {
+                setCity(res.data);
     
-        //     })
-        // }
+            })
+        }
 
         
 
@@ -118,15 +120,22 @@ const User = () =>{
 <>
 
 {decodedData?decode(decodedData.id):<></>}
-</>         
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+</>
 
         )
-
-
-
 }
 export default User

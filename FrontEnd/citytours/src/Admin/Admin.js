@@ -128,11 +128,6 @@ const Admin = () =>{
 
          const addCity= (e) =>{
             e.preventDefault()
-            console.log(nameCity)
-            console.log(bigimag)
-            console.log(center)
-            console.log(museums)
-            console.log(trend)
             axios.post('http://localhost:5000/app/admin/CreateCity' , {
                 data :{
                     name:nameCity,
