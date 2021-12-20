@@ -120,9 +120,8 @@
     transform: translateY(0);
 }
 
-.cont button{
+.cont .bb Button{
     text-decoration: none;
-    
 }
 
 .container .box  button{

@@ -128,7 +128,7 @@ className="carousel slide" data-bs-ride="carousel">
         <img src={city.centerImage} height={500} width={400}></img>
 </div>
  <div className="cont">
-    <div>
+    <div className='bb'>
         <h2> title</h2>
         <p>description</p>
         <Button variant="outline-info" ><Link to="/please">EXPLORE NEW</Link></Button>
@@ -175,11 +175,11 @@ className="carousel slide" data-bs-ride="carousel">
 
     <div className='Card'>
     <a href="https://www.w3schools.com/jsref/jsref_link.asp">
-
     <h3>Mobility in saudi</h3>
         <h3>   <RiPinDistanceLine/>    </h3>
     <div className='conttener '>
-    </div></a>
+    </div>
+    </a>
     </div>
 
     <div className='Card '>
@@ -198,10 +198,13 @@ className="carousel slide" data-bs-ride="carousel">
     </div>
 
     <div className='Card' >
+    <a href="https://riyadhtickets.herokuapp.com">
     <h3> Consolidated Ticket</h3>
+
     <h3> <GrTicket/> </h3>
     <div className='conttener'> 
     </div>
+    </a>
     </div>
 
 </div>

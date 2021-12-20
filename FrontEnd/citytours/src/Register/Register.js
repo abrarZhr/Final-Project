@@ -53,8 +53,20 @@ const Register = () => {
         <h1>SIGN UP</h1>
 
         <div className="Form">
-        <input onChange={(e)=> {setEmail(e.target.value)}} placeholder="Email"></input>
-        <input onChange={(e)=> {setPassword(e.target.value)}} placeholder="Password"></input>
+        <Form>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control  onChange={(e)=> {setEmail(e.target.value)}} type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control  onChange={(e)=> {setPassword(e.target.value)}} type="password" placeholder="Password" />
+  </Form.Group>
+</Form>
         
     <fieldset>
 
@@ -85,7 +97,7 @@ const Register = () => {
 
     <div className="bu">
     
-        <Button variant="outline-info" onClick = {(e)=>{register(e)}}>CREATE</Button>{' '}
+        <Button variant="outline-info" onClick = {(e)=>{register(e)}}>CREATE</Button>
         {/* Already have an account? */}
         </div>
         
