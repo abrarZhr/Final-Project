@@ -7,6 +7,7 @@ import Admin from "./Admin/Admin"
 import LogIn from "./LogIn/LogIn"
 import Register from "./Register/Register"
 import Cities from './Cities/Cities';
+import "./App.css"
 
 
 function App() {

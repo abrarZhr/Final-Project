@@ -171,46 +171,40 @@ className="carousel slide" data-bs-ride="carousel">
 </div>
 </div>
 
-
-
-
-
-
-
 <div className='row'>
+
     <div className='Card'>
+    <a href="https://www.w3schools.com/jsref/jsref_link.asp">
+
     <h3>Mobility in saudi</h3>
         <h3>   <RiPinDistanceLine/>    </h3>
-    <div className='conttener box1'>
-    </div>
+    <div className='conttener '>
+    </div></a>
     </div>
 
     <div className='Card '>
     <h3>virtual assistant</h3>
     <h3>   <BsFillChatDotsFill/>    </h3>
-  <div className='conttener box2'>
-        
-     
+  <div className='conttener '>
+    
     </div>
     </div>
 
     <div className='Card'>
-    <h3>   <TiTick/>    </h3>
     <h3> save traval</h3>
-    <div className='conttener box3'>
+    <h3>   <TiTick/>    </h3>
+    <div className='conttener'>
     </div>
     </div>
 
-    <div className='Card'>
-    <h3>   <GrTicket/>    </h3>
+    <div className='Card' >
     <h3> Consolidated Ticket</h3>
-    <div className='conttener box4'> 
+    <h3> <GrTicket/> </h3>
+    <div className='conttener'> 
     </div>
     </div>
+
 </div>
-      
-
-
              </>
          )
 }
