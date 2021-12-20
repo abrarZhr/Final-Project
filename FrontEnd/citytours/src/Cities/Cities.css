@@ -199,26 +199,29 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+
 }
 
 .row .Card{
-    width: 300px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
     position: relative;
     border: none;
-    border-radius: 70px 10px 70px 10px;
-    box-shadow: 5px 10px 10px #111111;
+    border-radius: 10px 10px 10px 10px;
+    /* box-shadow: 5px 10px 10px #111111; */
     overflow: hidden;
     cursor: pointer;
     margin: 10px 5px;
+    background-color: rgb(226, 220, 220)
 
 }
 
-.row .Card h2{
+.row .Card h3{
 
-    width: 105%;
-    height: 105%;
+    width: 100%;
     text-align: center;
+    color:black;
+   
 
 }
 
@@ -231,31 +234,47 @@
     display: grid;
     place-content: center;
     text-align: center;
-    background: linear-gradient(45deg,rgba(232,91,4,0.88),rgba(186, 24, 27, 0.686));
+    background: linear-gradient(45deg,rgb(212, 239, 248),rgba(250, 244, 244, 0.686));
     transition: all 0.5s linear;
 
 }
 .row .Card .conttener.box1{
-    clip-path: circle(0% at 0 100%);
+    clip-path: circle(0% at  100% 0%);
 
 }
 
 .row .Card:hover .conttener.box1{
+    clip-path: circle(141.7% at 100% 0%);
+
+}
+.row .Card .conttener.box2{
+    clip-path: circle(0% at  50% 50%);
+}
+.row .Card:hover .conttener.box2{
+    clip-path: circle(70.7% at 50% 50%);
+}
+.row .Card .conttener.box3{
+    clip-path: circle(0% at  100% 0%);
+
+}
+.row .Card:hover .conttener.box3{
+    clip-path: circle(141.7% at 100% 0%);
+
+}
+.row .Card .conttener.box4{
+    clip-path: circle(0% at 0 100%);
+
+}
+
+.row .Card:hover .conttener.box4{
     clip-path: circle(141.4% at 0 100%);
-
-}
-.row .Card .conttener{
-
-
-}
-.row .Card .conttener4{
 
 }
 
 .row .Card .conttener h3{
-    font-size: 35px;
+    font-size: 20px;
     color: seashell;
-    font-weight: 700;
+    font-weight: 700px;
     line-height: 45px;
     letter-spacing: 2px;
     padding-bottom: 5px;
@@ -264,6 +283,10 @@
 
 .row .Card .conttener h3:hover{
     transform: translateY(-10px);
+}
+
+.basics{
+   
 }
 
 

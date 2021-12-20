@@ -166,7 +166,7 @@ className="carousel slide" data-bs-ride="carousel">
 
 <div className='basics'>
 <h1>basics</h1>   
-<p></p> 
+<p>Plan your trip now for an experience full of vitality and beauty</p> 
 </div>
 
 
@@ -177,42 +177,32 @@ className="carousel slide" data-bs-ride="carousel">
 
 <div className='row'>
     <div className='Card'>
-    <h2>   <RiPinDistanceLine/>    </h2>
+    <h3>Mobility in saudi</h3>
+        <h3>   <RiPinDistanceLine/>    </h3>
     <div className='conttener box1'>
-        <h3> save travel</h3>
-        {/* <ul>
-            <li><a href=''></a></li>
-        </ul> */}
     </div>
     </div>
 
     <div className='Card '>
-    <h2>   <BsFillChatDotsFill/>    </h2>
-    <div className='conttener box2'>
-        <h3> save travel</h3>
-        {/* <ul>
-            <li><a href=''></a></li>
-        </ul> */}
+    <h3>virtual assistant</h3>
+    <h3>   <BsFillChatDotsFill/>    </h3>
+  <div className='conttener box2'>
+        
+     
     </div>
     </div>
 
     <div className='Card'>
-    <h2>   <TiTick/>    </h2>
+    <h3>   <TiTick/>    </h3>
+    <h3> save traval</h3>
     <div className='conttener box3'>
-        <h3> save travel</h3>
-        {/* <ul>
-            <li><a href=''></a></li>
-        </ul> */}
     </div>
     </div>
 
     <div className='Card'>
-    <h2>   <GrTicket/>    </h2>
-    <div className='conttener box4'>
-        <h3> save travel</h3>
-        {/* <ul>
-            <li><a href=''></a></li>
-        </ul> */}
+    <h3>   <GrTicket/>    </h3>
+    <h3> Consolidated Ticket</h3>
+    <div className='conttener box4'> 
     </div>
     </div>
 </div>
