@@ -85,10 +85,6 @@ const User = () =>{
         })
           }, [])
 
-          
-
-
-
          const addImage1 = (e) =>{
               e.preventDefault()
             axios.post(`http://localhost:5000/app/user/CreatePic/${addImage}` , {

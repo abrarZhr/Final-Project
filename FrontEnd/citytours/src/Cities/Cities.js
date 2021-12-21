@@ -9,7 +9,7 @@ import { Link  } from "react-router-dom"
 import { RiPinDistanceLine } from "react-icons/ri";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
-import { GrTicket } from "react-icons/gr";
+import { FaTicketAlt } from "react-icons/fa";
 import { Footer } from '../Footer/Footer';
 
 const Cities = () =>{
@@ -121,10 +121,10 @@ className="carousel slide" data-bs-ride="carousel">
         <img src={city.centerImage} height={500} width={400}></img>
 </div>
  <div className="cont">
-    <div className='bb'>
-        <h2> title</h2>
-        <p>description</p>
-        <Button variant="outline-info" ><Link to="/please">EXPLORE NEW</Link></Button>
+    <div className>
+        <h2> City Center</h2>
+        <p>The symbol of civilization and originality</p>
+        {<Button variant="outline-info"  ><Link style={{textDecoration: "none"}} to={`/Places/${cityp}/center`}>EXPLORE NEW</Link></Button>}
     </div>
 </div>
 </div>
@@ -135,9 +135,9 @@ className="carousel slide" data-bs-ride="carousel">
 </div>
  <div className="cont">
     <div>
-        <h2> title</h2>
-        <p>description</p>
-        <Button variant="outline-info" ><Link to="/please">EXPLORE NEW</Link></Button>
+        <h2>Museums</h2>
+        <p>Wander through history</p>
+        <Button variant="outline-info" ><Link style={{textDecoration: "none"}} to={`/Places/${cityp}/museum`}>EXPLORE NEW</Link></Button>
     </div>
 </div>
 </div>
@@ -147,9 +147,9 @@ className="carousel slide" data-bs-ride="carousel">
 </div>
  <div className="cont">
     <div>
-        <h2> title</h2>
-        <p>description</p>
-        <Button variant="outline-info" ><Link to="/please">EXPLORE NEW</Link></Button>
+        <h2>Markts</h2>
+        <p>Live at your own pace</p>
+        <Button variant="outline-info"  ><Link style={{textDecoration: "none"}} to={`/Places/${cityp}/marketing`}>EXPLORE NEW</Link></Button>
     </div>
 </div>
 </div>
@@ -194,7 +194,7 @@ className="carousel slide" data-bs-ride="carousel">
     <a href="https://riyadhtickets.herokuapp.com">
     <h3> Consolidated Ticket</h3>
 
-    <h3> <GrTicket/> </h3>
+    <h3> <FaTicketAlt/> </h3>
     <div className='conttener'> 
     </div>
     </a>

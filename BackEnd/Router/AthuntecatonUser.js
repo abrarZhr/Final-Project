@@ -8,7 +8,7 @@ router.post('/singup' , AuthController.singup);
 
 router.post('/login' , AuthController.login);
 
-// router.get('/logout' , AuthController.logout_get);
+router.get('/logout' , AuthController.logout_get);
 
 
 module.exports = router;

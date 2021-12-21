@@ -4,10 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Modal , Form  , FloatingLabel} from 'react-bootstrap';
 import NavBar from '../NavBar/NavBar';
-import User from '../User/User';
 import Button from 'react-bootstrap/Button'
-import { Link  } from "react-router-dom"
-import { useForm } from "react-hook-form";
 import jwt_decode from "jwt-decode";
 
 
@@ -35,7 +32,7 @@ const Admin = () =>{
 
                      <NavBar></NavBar>
                    <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
+       Add New City
       </Button>
 
                     <Modal
@@ -47,7 +44,7 @@ const Admin = () =>{
     >
 
     
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           add new City
         </Modal.Title>
@@ -64,22 +61,19 @@ const Admin = () =>{
   </FloatingLabel>
 
   <FloatingLabel controlId="floatingimage" label="bigImage">
-
     <Form.Control type="text" onChange={(e)=>setbig(e.target.value)} placeholder="image" />
   </FloatingLabel>
 
   <FloatingLabel controlId="floatingimage" label="image">
   <Form.Control type="text" onChange={(e)=>setcenter(e.target.value)} placeholder="center" />
-
   </FloatingLabel>
 
   <FloatingLabel controlId="floatingimage" label="image">
   <Form.Control type="text" onChange={(e)=>setmuseums(e.target.value)} placeholder="museum" />
-
   </FloatingLabel>
+
   <FloatingLabel controlId="floatingimage" label="image">
   <Form.Control type="text" onChange={(e)=>setTrend(e.target.value)} placeholder="image" />
-
   </FloatingLabel>
 </>
 
@@ -94,7 +88,7 @@ const Admin = () =>{
 
 
 </div>
-              </div>
+</div>
 
 )}
 }
@@ -116,7 +110,7 @@ const Admin = () =>{
 
     useEffect(() => {
    
-        axios.get('http://localhost:5000/app/admin/city/'+cityp)
+        axios.get('http://localhost:5000/app/admin/getCity/')
         .then ((res)=>{
             console.log(res.data)
             setcity(res.data)
@@ -177,6 +171,7 @@ const Admin = () =>{
             e.preventDefault()
             axios.delete(`http://localhost:5000/app/admin/deleteCity/${_id}`)
             .then((res) => {
+              console.log(res.data)
                 setcity(res.data);
     
             })
@@ -210,6 +205,22 @@ const Admin = () =>{
                   <>
 
 {decodedData?decode(decodedData.id):<></>}
+
+<div className='admin'>
+
+  {city.map((ele)=>{
+    return(
+      <div>
+      {ele.name}
+     <img src= {ele.BigImage} width={500} height={500}/>
+    <img src={ele.centerImage} width={500} height={500} />
+    <button onClick={(e)=>deleteCity(e,ele._id)}>delete</button>
+      </div>
+    )
+  })}
+</div>
+
+
           
                   </>
                 );

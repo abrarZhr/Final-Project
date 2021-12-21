@@ -29,10 +29,14 @@ router.post('/CreateCity' , async (req , res )=>{
 } )
 
 //getPlease
-router.get('/getPlease/:id' , async(req , res)=>{
+router.get('/getPlease/:id/:category' , async(req , res)=>{
   try{
     City.findById({_id:req.params.id}).then((city)=>{
-      res.send(city.places)
+      result=(city.places.filter((e)=>{
+        return e.type==req.params.category
+      }))
+
+      res.send(result)
     })
   }catch{
     res.status(500).send()
@@ -44,10 +48,10 @@ router.post('/CreatePleace/:id' , async (req , res )=>{
     const _id = req.params.id;
     const city = await City.findById(req.params.id)
     const NewPleace = new please ({
-        type:req.body.type,
-        image:req.body.image,
-        description:req.body.description,
-        location:req.body.location,
+        type:req.body.data.type,
+        image:req.body.data.image,
+        description:req.body.data.description,
+        location:req.body.data.location,
         
     });
     city.places.push(NewPleace)
@@ -97,47 +101,71 @@ router.get('/city/:id' , async (req , res )=>{
 })
 
 //Update
-router.put("/:id", async (req,res) => {
-    try {
-      const pleac = await please.findById(req.params.id);
-      if (pleac.type === req.body.type) {
-        try {
-          const updatedCity = await please.findByIdAndUpdate(req.params.id, {
-              $set: req.body,
-            },
-            { new: true }
-          );
+// router.put("/place/:id", async (req,res) => {
+//     try {
+//       const pleac = await please.findById(req.params.id);
+//       if (pleac.type === req.body.type) {
+//         try {
+//           const updatedCity = await please.findByIdAndUpdate(req.params.id, {
+//               $set: req.body,
+//             },
+//             { new: true }
+//           );
         
-        } catch (err) {
-          res.status(500).json(err);
-        }
-      } else {
-        res.status(401).json("You can update only your !");
-      }
-    } catch (err) {
-      res.status(500).json(err);
-    }
+//         } catch (err) {
+//           res.status(500).json(err);
+//         }
+//       } else {
+//         res.status(401).json("You can update only your !");
+//       }
+//     } catch (err) {
+//       res.status(500).json(err);
+//     }
+// })
+
+router.put("/city/:id", async (req,res) => {
+  const allowedUpdates = ['name', 'BigImage', 'centerImage', 'museumsImage', 'trendImage'];
+  const updates = Object.keys(request.body)
+  const isValidOperation  = updates.every((update)=> allowedUpdates.includes(update))
+  if(!isValidOperation) {
+      return response.status(400).send({erro: 'Invalid updates'});
+  }
+  try {
+      const city = await City.findOne({_id: request.params.id});
+      if(!city) {return response.status(404).send(404).send()}
+      updates.forEach((update)=> {
+          city[update] = request.body[update]
+      })
+      await city.save()
+      response.status(200).send(author)
+  } catch(e){
+      response.status(400).send(e)
+      console.error(e)
+  }
 })
 
 
-//delete
+
+
 router.delete("/deleteCity/:id", async (req,res) => {
-    try {
-      const user = await User.findById(req.params.id);
-      if (user.username === req.body.username) {
-        try {
-          await user.delete();
-          res.status(200).json("city has been deleted...");
-          
-        } catch (err) {
-          res.status(500).json(err);
-        }
-      } else {
-        res.status(401).json("You can delete only your !");
+  try {
+    const city = await City.findById({_id:req.params.id});
+    if (city._id == req.params.id) {
+      try {
+        await city.delete();
+        City.find({}).then((city)=>{
+          res.status(200).send(city)
+        })
+        
+      } catch (err) {
+        res.status(500).json(err);
       }
-    } catch (err) {
-      res.status(500).json(err);
+    } else {
+      res.status(401).json("wrong city id");
     }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 })
 
 

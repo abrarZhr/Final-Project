@@ -44,7 +44,7 @@ return(
         <div className="form">
         <div className="container">
         <span class="text1"> Welcome to </span>
-        <span class="text2">City</span>
+        {/* <span class="text2">City</span> */}
       
         </div>
         <select onChange={(e)=>{selectCityfun(e.target.value)}} class="form-select" aria-label="Default select example">
