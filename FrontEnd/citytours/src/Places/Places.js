@@ -55,7 +55,7 @@ const Places = ()=>{
             {please.map((ele)=>{
                 return(
                     <div>
-                {ele.type}
+            
                 <img src={ele.image}/>
                 {ele.description}
                 {ele.location}
@@ -72,15 +72,6 @@ const Places = ()=>{
         <button type="submit">Add</button> 
         </form>
  
-
-        
-
-
-        
-
-
-     
-
         </>
 
     )

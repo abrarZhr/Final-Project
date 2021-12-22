@@ -23,7 +23,7 @@ function App() {
     <Route path='/Admin' element={<Admin/>}/>
     <Route path='/Places/:cityId/:category' element={<Places/>}/>
     <Route path='/LogIn' element={<LogIn/>}/>
-    <Route path='/userSetting' element={<userSetting/>}/>
+    {/* <Route path='/userSetting' element={<userSetting/>}/> */}
     <Route path='/Footer' element={<Footer/>}/>
     </Routes>
     </>

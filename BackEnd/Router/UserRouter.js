@@ -41,8 +41,6 @@ router.delete('/:id' , async (req,res) =>{
             res.status(404).json("User not found !");
         
         }
-    } else {
-        res.status(401).json("you can delete only your account!");
     }
 
 });
