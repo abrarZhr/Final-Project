@@ -11,13 +11,19 @@ import { BsFillChatDotsFill } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
 import { FaTicketAlt } from "react-icons/fa";
 import { Footer } from '../Footer/Footer';
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 const Cities = () =>{
 
     const [city , setcity] = useState([])
-    const [enableEdit, setEnabeEdit] = useState(false)
-    const [idEdit, setIdEdit] = useState()
     const{cityp}=useParams()
+
+    useEffect (()=>{
+        Aos.init({duration :1000 ,
+            
+        });
+    },[]);
 
     useEffect(() => {
    
@@ -29,65 +35,6 @@ const Cities = () =>{
         })
           }, [])
 
-         // addCity
-
-         const addCity= (e) =>{
-            e.preventDefault()
-            axios.post('http://localhost:5000/app/admin/CreateCity' , {
-                data :{
-                    name:e.target.form[0].value,
-                    BigImage:e.target.form[1].value,
-                    centerImage:e.target.form[2].value,
-                    museumsImage:e.target.form[3].value,
-                    trendImage:e.target.form[4].value
-
-                }
-            })
-            .then((res)=>{
-                console.log(res.data)
-                setcity(res.data)
-            })
-
-         }
-
-         //update
-         function EditCity(_id) {
-             
-            setIdEdit(_id)
-            setEnabeEdit(true)
-         }
-         function saveEdith(e){
-         e.preventDefault()
-            axios.put(`http://localhost:5000/app/admin/${idEdit}`,
-                {
-                    data:
-                    {
-                        name:e.target.form[0].value,
-                        BigImage:e.target.form[1].value,
-                        centerImage:e.target.form[2].value,
-                        museumsImage:e.target.form[3].value,
-                        trendImage:e.target.form[4].value
-    
-                    }
-                })
-                .then((res) => {
-                    setcity(res.data);
-                });
-            setEnabeEdit(false)
-        }
-
-        //deleteCity
-
-        const deleteCity = (e, _id) => {
-            e.preventDefault()
-            axios.delete(`http://localhost:5000/app/admin/deleteCity/${_id}`)
-            .then((res) => {
-                setcity(res.data);
-    
-            })
-        }
-
-        
          return(
              <>
 
@@ -99,8 +46,10 @@ className="carousel slide" data-bs-ride="carousel">
     <div className="carousel-item active">
 
       <img src={city.BigImage} className="d-block w-100"/>
+   
       <div className="textCity">
       <h1>{city.name}</h1>
+     
         </div>
     </div>
   </div>

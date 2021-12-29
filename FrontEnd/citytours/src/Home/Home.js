@@ -1,13 +1,15 @@
-// import { React, useState,useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { React, useState,useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 // import NavBar from "../NavBar/NavBar";
-// import '../Home/Home'
 // import { useNavigate } from "react-router";
-// import axios from 'axios';
+import axios from 'axios';
+import './Home.css'
 
 
 
 const Home = () =>{
+
+        
         const [selectCity , setselectCity] =useState()
         const [City , setCity] =useState([])
         const [loading , setLoading] =useState(true)
@@ -26,7 +28,7 @@ const Home = () =>{
         function selectCityfun(city){
                 console.log(city+"cityy")
                 setselectCity(city)
-                navigate('/Admin/'+city)
+                navigate('/Cities/'+city)
 
         }
 
@@ -42,12 +44,16 @@ return(
       
         <div className="img"> 
         <div className="form">
-        <div className="text">
+
+        <div className="textHome">
         <h1> Welcome to </h1>
        </div>
+
+<div className="SelectCity">
         <select onChange={(e)=>{selectCityfun(e.target.value)}} class="form-select" aria-label="Default select example">
 
                 <option >city</option>  
+                
   {City.map (city=>{
           return(
         <>
@@ -61,7 +67,8 @@ return(
   
 </select>  
 </div>
-<div className='parent'> 
+</div>
+<div className="parent"> 
 <div className="card card1">
                 <h5>Riyadh</h5>
                 <p></p>

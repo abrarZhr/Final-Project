@@ -1,7 +1,7 @@
 .footer-basic {
     padding:40px 0;
     background-color:#ffffff;
-    color:#4b4c4d;
+    color:rgb(233, 150, 72);
   }
   
   .footer-basic ul {
@@ -40,7 +40,7 @@
     display:inline-block;
     text-align:center;
     border-radius:50%;
-    border:1px solid #ccc;
+    border:1px solid rgb(233, 150, 72);
     margin:0 8px;
     color:inherit;
     opacity:0.75;
@@ -48,13 +48,15 @@
   
   .footer-basic .social > a:hover {
     opacity:0.9;
+    color: rgb(44, 26, 109);
+  
   }
   
   .footer-basic .copyright {
     margin-top:15px;
     text-align:center;
     font-size:13px;
-    color:#aaa;
+    color: rgb(44, 26, 109);
     margin-bottom:0;
   }
   

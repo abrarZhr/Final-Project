@@ -20,7 +20,8 @@ router.post('/CreateCity' , async (req , res )=>{
     try {
         await NewCity.save()
         res.status(200)
-        res.send(NewCity)
+        const cityToSend = await City.find({});
+      res.status(200).send(cityToSend)
     }
     catch(e) {
         console.error(e)
@@ -66,10 +67,6 @@ router.post('/CreatePleace/:id' , async (req , res )=>{
     }
     console.log("Add");
 } )
-
-
-
-
 
 //get 
 router.get('/getCity' , async (req , res )=>{
@@ -152,7 +149,7 @@ router.put("/city/:id", async (req,res) => {
   const updates = Object.keys(req.body)
   const isValidOperation  = updates.every((update)=> allowedUpdates.includes(update))
   if(!isValidOperation) {
-      return res.status(400).send({erro: 'Invalid updates'});
+      return res.status(400).send({error: 'Invalid updates'});
   }
   try {
       const city = await City.findOne({_id: req.params.id});
@@ -161,7 +158,8 @@ router.put("/city/:id", async (req,res) => {
           city[update] = req.body[update]
       })
       await city.save()
-      res.status(200).send(city)
+      const cityToSend = await City.find({});
+      res.status(200).send(cityToSend)
   } catch(e){
       res.status(400).send(e)
       console.error(e)

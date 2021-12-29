@@ -2,232 +2,269 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { Modal , Form  , FloatingLabel} from 'react-bootstrap';
+import { Modal, Form, FloatingLabel } from 'react-bootstrap';
 import NavBar from '../NavBar/NavBar';
 import Button from 'react-bootstrap/Button'
+
 import jwt_decode from "jwt-decode";
+import CustomizedDialogs from './dialog'
+import './Admin.css'
 
 
-const Admin = () =>{
+const Admin = () => {
 
-  
-  let decodedData ;
+
+  let decodedData;
   const storedToken = localStorage.getItem("token");
-  if (storedToken){
-      decodedData = jwt_decode(storedToken, { payload: true });
-      let expirationDate = decodedData.exp;
-      var current_time = Date.now() / 1000;
-      if(expirationDate < current_time)
-      {
-          localStorage.removeItem("token");
+  if (storedToken) {
+    decodedData = jwt_decode(storedToken, { payload: true });
+    let expirationDate = decodedData.exp;
+    var current_time = Date.now() / 1000;
+    if (expirationDate < current_time) {
+      localStorage.removeItem("token");
+    }
+  }
+
+
+  const decode = (id) => {
+    if (decodedData != undefined) {
+      if (decodedData.UserType == "admin") {
+        return (
+          <div>
+
+            <NavBar></NavBar>
+            <Button variant="primary" onClick={() => setModalShow(true)}>
+              Add New City
+            </Button>
+
+            <Modal
+              show={modalShow}
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+
+
+              <Modal.Header>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  add new City
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+
+                <>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="name"
+                    className="mb-3"
+                  >
+                    <Form.Control type="text" onChange={(e) => setCityName(e.target.value)} placeholder="jeddah" />
+                  </FloatingLabel>
+
+                  <FloatingLabel
+                    controlId="floatingimage"
+                    label="bigImage"
+                    className="mb-3"
+                  >
+                    <Form.Control type="text" onChange={(e) => setbig(e.target.value)} placeholder="image" />
+                  </FloatingLabel>
+
+                  <FloatingLabel
+                    controlId="floatingimage"
+                    label="image"
+                    className="mb-3"
+                  >
+                    <Form.Control type="text" onChange={(e) => setcenter(e.target.value)} placeholder="center" />
+                  </FloatingLabel>
+
+                  <FloatingLabel
+                    controlId="floatingimage"
+                    label="image"
+                    className="mb-3">
+                    <Form.Control type="text" onChange={(e) => setmuseums(e.target.value)} placeholder="museum" />
+                  </FloatingLabel>
+
+                  <FloatingLabel
+                    controlId="floatingimage"
+                    label="image"
+                    className="mb-3">
+                    <Form.Control type="text" onChange={(e) => setTrend(e.target.value)} placeholder="image" />
+                  </FloatingLabel>
+                </>
+
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={(e) => addCity(e)}>add</Button>
+                <Button onClick={() => setModalShow(false)}>Close</Button>
+
+
+              </Modal.Footer>
+            </Modal>
+
+
+          </div>
+
+        )
       }
- }
+    }
+  }
+  const [city, setcity] = useState([])
+  const [enableEdit, setEnabeEdit] = useState(false)
+  const [idEdit, setIdEdit] = useState()
+  const { cityp } = useParams()
 
- 
- const decode = (id) => {
-  if (decodedData != undefined){
-        if ( decodedData.UserType == "admin"){
-           return (
-              <div>
+  const [nameCity, setCityName] = useState()
+  const [bigimag, setbig] = useState()
+  const [center, setcenter] = useState()
+  const [museums, setmuseums] = useState()
+  const [trend, setTrend] = useState()
+  const [EditId, setEditId] = useState()
+  const [EditOrNot, setEditOrNot] = useState(false)
 
-                     <NavBar></NavBar>
-                   <Button variant="primary" onClick={() => setModalShow(true)}>
-       Add New City
-      </Button>
+  const [modalShow, setModalShow] = React.useState(false);
 
-                    <Modal
-        show={modalShow}
 
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
 
-    
-      <Modal.Header>
-        <Modal.Title id="contained-modal-title-vcenter">
-          add new City
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
+  useEffect(() => {
 
-      <>
-  <FloatingLabel
-    controlId="floatingInput"
-    label="name"
-    className="mb-3"
-  >
-    <Form.Control type="text" onChange={(e)=>setCityName(e.target.value)} placeholder="jeddah" />
-  </FloatingLabel>
+    axios.get('http://localhost:5000/app/admin/getCity/')
+      .then((res) => {
+        console.log(res.data)
+        setcity(res.data)
 
-  <FloatingLabel controlId="floatingimage" label="bigImage">
-    <Form.Control type="text" onChange={(e)=>setbig(e.target.value)} placeholder="image" />
-  </FloatingLabel>
+      })
+  }, [])
 
-  <FloatingLabel controlId="floatingimage" label="image">
-  <Form.Control type="text" onChange={(e)=>setcenter(e.target.value)} placeholder="center" />
-  </FloatingLabel>
+  // addCity
 
-  <FloatingLabel controlId="floatingimage" label="image">
-  <Form.Control type="text" onChange={(e)=>setmuseums(e.target.value)} placeholder="museum" />
-  </FloatingLabel>
+  const addCity = (e) => {
+    e.preventDefault()
+    axios.post('http://localhost:5000/app/admin/CreateCity', {
+      data: {
+        name: nameCity,
+        BigImage: bigimag,
+        centerImage: center,
+        museumsImage: museums,
+        trendImage: trend
 
-  <FloatingLabel controlId="floatingimage" label="image">
-  <Form.Control type="text" onChange={(e)=>setTrend(e.target.value)} placeholder="image" />
-  </FloatingLabel>
-</>
+      }
+    })
+      .then((res) => {
+        console.log(res.data)
+        setcity(res.data)
+      })
 
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={(e)=>addCity (e)}>add</Button>
-        <Button onClick={()=> setModalShow(false)}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+  }
+
+  //update
+  function update(Id) {
+    console.log("000000")
+    axios.put(`http://localhost:5000/app/admin/city/${Id}`,
+      {
+
+        name: nameCity,
+        BigImage: bigimag,
+        centerImage: center,
+        museumsImage: museums,
+        trendImage: trend
+
+
+      })
+      .then((res) => {
+        console.log("object")
+        console.log(res.data)
+        setcity(res.data);
+        setEditOrNot(false)
+
+      });
+  }
+
+  function changeUpdate(city) {
+    setEditId(city._id)
+    setCityName(city.name)
+    setEditOrNot(true)
+  }
+
+  //deleteCity
+
+  const deleteCity = (e, _id) => {
+    e.preventDefault()
+    axios.delete(`http://localhost:5000/app/admin/deleteCity/${_id}`)
+      .then((res) => {
+        console.log(res.data)
+        setcity(res.data);
+
+      })
+  }
+
+
+
+
+  const [lgShow, setLgShow] = useState(false)
+
+
+
+
+
+  return (
+    <>
+
+      {decodedData ? decode(decodedData.id) : <></>}
+
+      <div className='test' >
+        {city.map((ele) => {
+          return ( 
+
+            
+            <>
+            <div className='imagg'>
+
+            <h1>{ele.name}</h1>
+            <img src={ele.BigImage} height={300} width={300}></img>
+            <img src={ele.trendImage}  height={300} width={300} ></img>
+            <img src={ele.museumsImage}  height={300} width={300}></img>
+            <img src={ele.centerImage} height={300} width={300}></img>
+
+</div>
+
+<div className='editDeleteButt'>
 
 <div>
 
-
+<Button onClick={(e)=> deleteCity(e,ele._id)}> delete</Button> 
 </div>
-</div>
-
-)}
-}
-}
-    const [city , setcity] = useState([])
-    const [enableEdit, setEnabeEdit] = useState(false)
-    const [idEdit, setIdEdit] = useState()
-    const{cityp}=useParams()
-
-    const [nameCity , setCityName] = useState()
-    const [bigimag , setbig] = useState()
-    const [center , setcenter] = useState()
-    const [museums , setmuseums] = useState()
-    const [trend , setTrend]= useState()
-
-    const [modalShow, setModalShow] = React.useState(false);
-
-    
-
-    useEffect(() => {
-   
-        axios.get('http://localhost:5000/app/admin/getCity/')
-        .then ((res)=>{
-            console.log(res.data)
-            setcity(res.data)
-
-        })
-          }, [])
-
-         // addCity
-
-         const addCity= (e) =>{
-            e.preventDefault()
-            axios.post('http://localhost:5000/app/admin/CreateCity' , {
-                data :{
-                    name:nameCity,
-                    BigImage:bigimag,
-                    centerImage:center,
-                    museumsImage:museums,
-                    trendImage:trend
-
-                }
-            })
-            .then((res)=>{
-                console.log(res.data)
-                setcity(res.data)
-            })
-
-         }
-
-         //update
-         function EditCity(_id) {
-             
-            setIdEdit(_id)
-            setEnabeEdit(true)
-         }
-         function saveEdith(e){
-         e.preventDefault()
-            axios.put(`http://localhost:5000/app/admin/${idEdit}`,
-                {
-                    data:
-                    {
-                        name:e.target.form[0].value,
-                        BigImage:e.target.form[1].value,
-                        centerImage:e.target.form[2].value,
-                        museumsImage:e.target.form[3].value,
-                        trendImage:e.target.form[4].value
-    
-                    }
-                })
-                .then((res) => {
-                    setcity(res.data);
-                });
-            setEnabeEdit(false)
-        }
-
-        //deleteCity
-
-        const deleteCity = (e, _id) => {
-            e.preventDefault()
-            axios.delete(`http://localhost:5000/app/admin/deleteCity/${_id}`)
-            .then((res) => {
-              console.log(res.data)
-                setcity(res.data);
-    
-            })
-        }
 
 
-        //add pleace 
-        const addPleace= (e ,id) =>{
-            e.preventDefault()
-            axios.post(`http://localhost:5000/app/admin/CreatePleace/${id}` , {
-                data :{
-                    type:e.target.form[0].value,
-                    image:e.target.form[1].value,
-                    centerImage:e.target.form[2].value,
-                    description:e.target.form[3].value,
-                    location:e.target.form[4].value
-
-                }
-            })
-            .then((res)=>{
-                console.log(res.data)
-                setcity(res.data)
-            })
-
-         }
-
-  
+          <CustomizedDialogs>
           
-    
-                return (
-                  <>
-
-{decodedData?decode(decodedData.id):<></>}
-
-<div className='admin'>
-
-  {city.map((ele)=>{
-    return(
-      <div>
-      {ele.name}
-     <img src= {ele.BigImage} width={500} height={500}/>
-    <img src={ele.centerImage} width={500} height={500} />
-    <button onClick={(e)=>deleteCity(e,ele._id)}>delete</button>
+<div className='listOfInputs'>
+          
+<input className='updateInput' onChange={(e) => setCityName(e.target.value)} placeholder='City Name'></input> {' '}
+<input className='updateInput' onChange={(e)=> setbig(e.target.value)} placeholder='heder image'></input> {' '}
+<input className='updateInput' onChange={(e)=> setTrend(e.target.value)} placeholder='Trend Image'></input> {' '}
+<input className='updateInput' onChange={(e)=> setmuseums(e.target.value)} placeholder='Museums Image'></input> {' '}
+<input className='updateInput' onChange={(e)=> setTrend(e.target.value)} placeholder='Trend Image'></input> {' '} <br></br>
+</div>
+<Button onClick={() =>  update(ele._id) } >Save Changes</Button>
+            
+     
+          </CustomizedDialogs>
+</div>
+          </>)
+        })}
       </div>
-    )
-  })}
-</div>
 
 
-          
-                  </>
-                );
-                }
-            
- 
-            
-        
-              
+
+
+
+
+    </>
+  )
+}
+
+
+
+
+
 export default Admin 

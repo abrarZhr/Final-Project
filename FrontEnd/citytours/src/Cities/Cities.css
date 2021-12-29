@@ -15,16 +15,16 @@
 
 .body{
     display: flex;
+    justify-content: space-between;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
+   
 }
 
 .container{
-    position: relative;
     width: 1100px;
     display: flex;
-    flex-wrap:wrap;
 }
 
 .container .box{
@@ -240,38 +240,10 @@
     transition: all 0.5s linear;
 
 }
-/* .row .Card .conttener.box1{
-    clip-path: circle(0% at  100% 0%);
 
-}
 
-.row .Card:hover .conttener.box1{
-    clip-path: circle(141.7% at 100% 0%);
 
-}
-.row .Card .conttener.box2{
-    clip-path: circle(0% at  50% 50%);
-}
-.row .Card:hover .conttener.box2{
-    clip-path: circle(70.7% at 50% 50%);
-}
-.row .Card .conttener.box3{
-    clip-path: circle(0% at  100% 0%);
 
-}
-.row .Card:hover .conttener.box3{
-    clip-path: circle(141.7% at 100% 0%);
-
-}
-.row .Card .conttener.box4{
-    clip-path: circle(0% at 0 100%);
-
-}
-
-.row .Card:hover .conttener.box4{
-    clip-path: circle(141.4% at 0 100%);
-
-} */
 
 .row .Card .conttener h3{
     font-size: 20px;

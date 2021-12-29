@@ -67,8 +67,11 @@ module.exports.login = async (req, res) => {
     const {email , password }=req.body;
 
     try {
+
         // check the email in DB
         const user = await User.login({ email ,password});
+
+    
         const token = createToken(user._id, user.email , user.UserType);
         res.status(200).json({user:token})
     } catch (err) {
