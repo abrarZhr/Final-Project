@@ -9,6 +9,7 @@ import Cities from './Cities/Cities';
 import { Footer } from './Footer/Footer';
 import Places from './Places/Places'
 import Home from './Home/Home'
+import User from './User/User';
 
 
 
@@ -25,7 +26,8 @@ function App() {
     <Route path='/Places/:cityId/:category' element={<Places/>}/>
     <Route path='/LogIn' element={<LogIn/>}/> 
     <Route path='/userSetting' element={<userSetting/>}/>
-  <Route path='/Footer' element={<Footer/>}/>
+    <Route path='/Footer' element={<Footer/>}/>
+    <Route path='/User' element={<User/>}/>
     </Routes>
     </>
 

@@ -7,18 +7,18 @@ const AddUser = () =>{
     <Form.Group>
         <Form.Control animation="glow"
         type="text" 
-        placeholder="Name"
+        placeholder="image"
         required
         />
          </Form.Group>
          <Form.Group>
         <Form.Control 
         type="text"
-        placeholder=""
+        placeholder="descrption"
         required
         />
     </Form.Group>
-    <Button variant="success" type="submit" block>Add New Please </Button>
+    <Button variant="success" type="submit" block>Add post </Button>
 </Form>
     )
 }

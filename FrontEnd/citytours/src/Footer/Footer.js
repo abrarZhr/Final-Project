@@ -25,7 +25,7 @@ export const Footer = () => {
                 <li className="list-inline-item"><a href="#">Terms</a></li>
                 <li className="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-            <p className="copyright">copyright ©</p>
+            <p className="copyright">©Copyright Abrar</p>
         </footer>
     </div>
     

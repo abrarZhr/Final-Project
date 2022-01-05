@@ -241,7 +241,7 @@ const Admin = () => {
           
 <input className='updateInput' onChange={(e) => setCityName(e.target.value)} placeholder='City Name'></input> {' '}
 <input className='updateInput' onChange={(e)=> setbig(e.target.value)} placeholder='heder image'></input> {' '}
-<input className='updateInput' onChange={(e)=> setTrend(e.target.value)} placeholder='Trend Image'></input> {' '}
+<input className='updateInput' onChange={(e)=> setcenter(e.target.value)} placeholder='Center Image'></input> {' '}
 <input className='updateInput' onChange={(e)=> setmuseums(e.target.value)} placeholder='Museums Image'></input> {' '}
 <input className='updateInput' onChange={(e)=> setTrend(e.target.value)} placeholder='Trend Image'></input> {' '} <br></br>
 </div>

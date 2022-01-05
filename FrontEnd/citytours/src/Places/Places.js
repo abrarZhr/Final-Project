@@ -52,7 +52,6 @@ const Places = ()=>{
               <Button variant="primary" onClick={() => setModalShow(true)}>
   Add New City
  </Button>
-
                <Modal
    show={modalShow}
 

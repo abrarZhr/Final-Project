@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import './Cities.css'
 import NavBar from '../NavBar/NavBar';
+import Image from '../Cities/imagefetch'
 import User from '../User/User';
 import Button from 'react-bootstrap/Button'
 import { Link  } from "react-router-dom"
@@ -39,7 +40,8 @@ const Cities = () =>{
              <>
 
 <NavBar/>
-<User/>
+
+
 <div id="carouselExampleSlidesOnly" 
 className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
@@ -133,7 +135,7 @@ className="carousel slide" data-bs-ride="carousel">
     </div>
 
     <div className='Card'>
-    <h3> save traval</h3>
+    <h3>More infromation</h3>
     <h3>   <TiTick/>    </h3>
     <div className='conttener'>
     </div>
@@ -141,7 +143,7 @@ className="carousel slide" data-bs-ride="carousel">
 
     <div className='Card' >
     <a href="https://riyadhtickets.herokuapp.com">
-    <h3> Consolidated Ticket</h3>
+    <h3> Create your own itinerary</h3>
 
     <h3> <FaTicketAlt/> </h3>
     <div className='conttener'> 
@@ -150,6 +152,9 @@ className="carousel slide" data-bs-ride="carousel">
     </div>
 
 </div>
+
+<Image/>
+
 <Footer></Footer>
              </>
          )

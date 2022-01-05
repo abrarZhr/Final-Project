@@ -50,24 +50,26 @@ return(
        </div>
 
 <div className="SelectCity">
-        <select onChange={(e)=>{selectCityfun(e.target.value)}} class="form-select" aria-label="Default select example">
+        <select onChange={(e)=>{selectCityfun(e.target.value)}}>
 
                 <option >city</option>  
                 
+
+
   {City.map (city=>{
           return(
         <>
-       
         <option value={city._id}>{city.name}</option>  
         </>
           )
   })}
 
-
-  
 </select>  
 </div>
 </div>
+
+{/* end select  */}
+
 <div className="parent"> 
 <div className="card card1">
                 <h5>Riyadh</h5>

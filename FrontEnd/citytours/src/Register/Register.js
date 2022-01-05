@@ -16,6 +16,7 @@ const Register = () => {
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
     const [UserType , setUserType]=useState()
+    const [UserName , setUserName]= useState()
     const navigate=useNavigate();
 
       const register= (e) => {
@@ -25,7 +26,8 @@ const Register = () => {
           .post('http://localhost:5000/singup',{
               email:Email,
               password:Password,
-              UserType:UserType
+              UserType:UserType,
+              UserName:UserName
       })
           .then((res) => {
               console.log(res)
@@ -54,6 +56,12 @@ const Register = () => {
 
         <div className="Form"> 
         <Form>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>User Name</Form.Label>
+    <Form.Control  onChange={(e)=> {setUserName(e.target.value)}} type="text" placeholder="user name" />
+  </Form.Group>
+
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control  onChange={(e)=> {setEmail(e.target.value)}} type="email" placeholder="Enter email" />
@@ -66,6 +74,8 @@ const Register = () => {
     <Form.Label>Password</Form.Label>
     <Form.Control  onChange={(e)=> {setPassword(e.target.value)}} type="password" placeholder="Password" />
   </Form.Group>
+
+  
 </Form>
         
     <fieldset>
@@ -96,7 +106,6 @@ const Register = () => {
     </fieldset>
 
     <div className="bu">
-    
         <Button variant="outline-info" onClick = {(e)=>{register(e)}}>CREATE</Button>
         {/* Already have an account? */}
         </div>

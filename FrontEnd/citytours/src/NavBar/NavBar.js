@@ -7,8 +7,7 @@ import '../Register/Register'
 import { Link , useNavigate } from "react-router-dom"
 import { BiLogOut } from "react-icons/bi";
 import { GiCamel } from "react-icons/gi";
-
-
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 const NavBar = () =>{
@@ -20,6 +19,8 @@ const NavBar = () =>{
       localStorage.removeItem('token')
       navigate('/')
   }
+
+ 
     return(
 <container>
     <div className="rapper">
@@ -50,8 +51,6 @@ const NavBar = () =>{
     </form>
     </li> 
         ) : null}
-   
-
     
     {getLocalStorage ?(
         <li class="nav-item">
@@ -62,11 +61,17 @@ const NavBar = () =>{
         ) : null}
     </ul>
 
-
+      <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+  Profail setting
+  </Dropdown.Toggle>
+  <Dropdown.Menu>
+    <Dropdown.Item ><Link to='/User'>User </Link></Dropdown.Item>
+    <Dropdown.Item> <Link to='/LogOut'> <BiLogOut onClick={(e)=>logout(e)}/></Link> </Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
   </div>
 </nav>
-
-
     </div>
 </container>
 

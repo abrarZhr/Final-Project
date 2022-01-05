@@ -1,121 +1,104 @@
-import axios from 'axios';
+import axios from "axios";
 import { useEffect, useState } from "react";
-import ADDUsar from './AddUsar';
+import "./UserStyle.js";
 import jwt_decode from "jwt-decode";
-import { Modal } from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
+import Button from 'react-bootstrap/Button'
+import NavBar from "../NavBar/NavBar";
+import Posts from '../User/Posts/Posts'
+import Form from '../User/Form/Form'
+
+import UseStyles from './UserStyle'
 
 
-const User = () =>{
 
-    let decodedData ;
-    const storedToken = localStorage.getItem("token");
-    if (storedToken){
-        decodedData = jwt_decode(storedToken, { payload: true });
-        let expirationDate = decodedData.exp;
-        var current_time = Date.now() / 1000;
-        if(expirationDate < current_time)
-        {
-            localStorage.removeItem("token");
-        }
-   }
-
-    
-   const [show, setShow] = useState(false);
-   const handleClose = () => setShow(false);
-   const handleShow = () => setShow(true);
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 
 
-   const decode = (id) => {
-    if (decodedData != undefined){
-          if ( decodedData.UserType == "user"){
-             return (
-                <div>
-                    
-<>
-                              
-<div className="table-title">
-    <div className="row">
-        <div className="col-sm-6">
-        </div>
-        <div className="col-sm-6">
-            <Button onClick={handleShow} className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i><span>add new city</span></Button>
-        </div>
-    </div>
-</div>
-<Modal show={show} onHide={handleClose}>
-    <Modal.Header>
-    <Modal.Title>
-    Add New City
-    </Modal.Title>
-
-        <Modal.Body>
-        <ADDUsar/>
-
-        </Modal.Body>
-        <Modal.Footer>
-
-        </Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-            close Button
-        </Button>
-    </Modal.Header>
-</Modal>  
-          </>
-                </div>
-             )}
-          }
-        }
-    
-    const [Idimage , setIdImage] = useState()
-    const [addImage , setImage] = useState()
-    const [enableEdit, setEnabeEdit] = useState(false)
+const User = () => {
+  const Classes = UseStyles();
 
 
-    const [City , setCity] = useState()
-    const [imges, setimges] = useState()
-    const [description, setdescription] = useState()
+  // const [loading , setLoading] =useState(true)
+  // const [profail, setprofail] = useState();
+  // const [clicked, setClicked] = useState(true);
+  // const [email, setemail] = useState();
+  // const [password, setpassword] = useState();
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/app/user/image/${Idimage}`)
-        .then ((res)=>{
-            console.log(res.data)
-            setCity(res.data)
+  // let decodedData;
+  // const storedToken = localStorage.getItem("token");
+  // if (storedToken) {
+  //   decodedData = jwt_decode(storedToken, { payload: true });
+  //   let expirationDate = decodedData.exp;
+  //   var current_time = Date.now() / 1000;
+  //   if (expirationDate < current_time) {
+  //     localStorage.removeItem("token");
+  //   }
+  // }
+  // const [tokenId, setToken] = useState(decodedData.id);
 
-        })
-          }, [])
+  // useEffect(() => {
+  //   if (tokenId !== undefined) {
+  //     axios.get(`http://localhost:5000/app/user/${tokenId}`).then((res) => {
+  //         console.log(res.data)
+  //       setprofail(res.data);
+  //       setLoading(false)
+  //     });
+  //   }
+  // }, []);
 
-         const addImage1 = (e) =>{
-              e.preventDefault()
-            axios.post(`http://localhost:5000/app/user/CreatePic/${addImage}` , {
-                data :{
-                    Image:imges,
-                    description:description
-                }
-            })
-            .then((res)=>{
-                setCity(res.data)
-            })
+  // const showUpdateInput = () => {
+  //   if (clicked) {
+  //     setClicked(false);
+  //   } else {
+  //     setClicked(true);
+  //   }
+  // };
 
-         }
+  // const UpdateProfail = (id) => {
+  //     console.log(email,password)
+  //   axios
+  //     .put(`http://localhost:5000/app/user/${id}`, {
+  //       email: email,
+  //       password: password,
 
-           //deleteimage
-
-        const deleteimage  = (e, _id) => {
-            e.preventDefault()
-            axios.delete(`http://localhost:5000//app/user/deleteCity/${_id}`)
-            .then((res) => {
-                setCity(res.data);
-    
-            })
-        }
-
+  //     })
+  //     .then((res) => {
+  //       setprofail(res.data);
         
+  //     });
+  // };
 
-        return(
-<>
+  // if(loading){
+  //     return(
+  //             <p>loading..</p>
+  //     )
+  //     }
 
-{decodedData?decode(decodedData.id):<></>}
+  return ( 
+     
+   
+    
+
+ <>
+  <NavBar></NavBar>
+  <Container maxWidth="lg">
+      <AppBar className={Classes.appBar} position="static" color="inherit">
+        <Typography className={Classes.heading} variant="h2" align="center">Memories</Typography>
+        </AppBar>
+      <Grow in>
+        <Container>
+          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+            <Grid item xs={12} sm={7}>
+              <Posts  />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Form   />
+            </Grid>
+          </Grid>
+        </Container>
+      </Grow>
+    </Container>
+      
 
 
 
@@ -123,15 +106,11 @@ const User = () =>{
 
 
 
-
-
-
-
-
-
-
-</>
-
-        )
+  </>
+  );
+  
 }
-export default User
+
+
+export default User;
+

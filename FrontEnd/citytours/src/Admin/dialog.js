@@ -60,7 +60,7 @@ export default function CustomizedDialogs({children}) {
   return (
     <div>
       <Button  onClick={handleClickOpen}>
-        Open dialog
+       update
       </Button>
       <BootstrapDialog
         onClose={handleClose}

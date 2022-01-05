@@ -24,7 +24,6 @@
 }
 
 .special-heading + p{
-    /* margin: -10px 0 0; */
     font-size: 20px;
     text-align: center;
     color: #797979;
@@ -72,8 +71,8 @@ section{
 }
 .cotent1 .Image{
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     overflow: hidden;
 }
 
@@ -93,20 +92,23 @@ section{
     z-index: 222;
     background: rgba(255, 255, 255, 0.1);
     /* backdrop-filter: blur(20px); */
-    padding: 40px;
-    max-width: 400px;
-    border: 1px solid rgba(255, 255, 255, 0.1) ;
+    padding: 100px;
+    max-width: 1000px;
+    border: 1px solid rgba(10, 10, 10, 0.1) ;
     border-radius: 10px;
     transform: translate(-88px , 50px);
-    background-color:#643B47;
+    /* background-color:#643B47; */
 }
 
 .cotent1 .text-box h3{
     font-size: 2em;
     margin-bottom: 10px;
-   
+    
 
 }
-.media-icone{
-    margin-top:100px ;
+
+
+.text-box iframe{
+   margin: 50px;
+    
 }
