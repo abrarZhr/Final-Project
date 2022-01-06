@@ -44,22 +44,28 @@ const createToken = (id, email,UserType) => {
 
 
 module.exports.singup = async (req , res)=>{
-    const {email , password , UserType } = req.body;
+    let {email , password , UserType , UserName } = req.body;
+
+    let salt = await bcrypt.genSalt();
+    password = await bcrypt.hash(password , salt)
+
 
     try{
      const newUser = await User.create({
+        UserName,
          email,
          password,
-         UserType 
+         UserType ,
+         
+
      })
-     const token = createToken(newUser._id, newUser.email , newUser.UserType);
-    //  const user = await newUser.save() 
+     const token = createToken(newUser._id, newUser.email , newUser.UserType , newUser.UserName );
      res.status(200).json({user:token})
 
     }
     catch(err){
         const errors = handlErrors(err)
-        res.status(400).send({errors});
+        res.status(200).send("Error Occured");
     }
 }
 
@@ -69,13 +75,12 @@ module.exports.login = async (req, res) => {
     try {
 
         // check the email in DB
-        const user = await User.login({ email ,password});
-
-    
+        const user = await User.login( email ,password);
+        
         const token = createToken(user._id, user.email , user.UserType);
         res.status(200).json({user:token})
     } catch (err) {
         const errors = handlErrors(err)
-        res.status(400).json({ errors });
+        res.status(200).json({ errors });
     }
 }

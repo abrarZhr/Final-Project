@@ -2,11 +2,17 @@ const mongoose = require('mongoose');
 const {isEmail}=require('validator');
 const bcrypt =require("bcrypt");
 const Image = require('./Image').schema;
-const City = require('./City').schema;
 const Schema=mongoose.Schema
+const PostMessage = require('./PostMessage').schema;
+
 
 
 const UserSchema = new Schema({
+    UserName :{
+        type:String,
+        required:[true]
+
+    },
     email :{
         type:String,
         required: [true , 'please enter an email'],
@@ -26,7 +32,9 @@ const UserSchema = new Schema({
         default:'user',
     },
 
-    images :[Image]
+   
+
+    PostMessage :[PostMessage]
 
 })
 
@@ -39,15 +47,17 @@ UserSchema.post('save', function (doc , next){
     })
 
 // fire a function before doc saved to db
-UserSchema.pre('save', async function (next){
-    // console.log('user about to be created $ saved',this );
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password , salt)
-    next();
-})
-// static method to login user
-UserSchema.statics.login = async function(email, password){
+// UserSchema.pre('save', async function (next){
+//     // console.log('user about to be created $ saved',this );
+//     const salt = await bcrypt.genSalt(10);
+//     this.password = await bcrypt.hash(this.password , salt)
+//     next();
+// })
+//static method to login user
+
+UserSchema.statics.login = async function (email, password){
     const user = await this.findOne({email:email})
+    
     if (user){
       const auth= await bcrypt.compare(password , user.password)
       if(auth){
@@ -57,6 +67,10 @@ UserSchema.statics.login = async function(email, password){
     }
     throw Error('incorrect email')
 }
+
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+  };
 
 const User = mongoose.model('user',UserSchema);
 module.exports=User;

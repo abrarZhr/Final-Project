@@ -2,7 +2,6 @@ const express= require('express')
 const router = express.Router()
 router.use(express.json());
 const City = require('../model/City');
-const User = require('../model/User');
 const please =require('../model/Place');
 
 
@@ -190,6 +189,26 @@ router.delete("/deleteCity/:id", async (req,res) => {
   }
 })
 
+router.delete("/deletePleas/:id", async (req,res) => {
+  try {
+    const city = await City.findById({_id:req.params.id});
+    if (city._id == req.params.id) {
+      try {
+        await city.delete();
+        City.find({}).then((city)=>{
+          res.status(200).send(city)
+        })
+        
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(401).json("wrong city id");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 
 
