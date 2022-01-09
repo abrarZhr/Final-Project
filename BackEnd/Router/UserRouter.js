@@ -237,12 +237,23 @@ router.put("/updatePost/:idPost", async(req , res )=>{
 }) 
 
 
-router.delete("/deletePost/:id" , async(req ,res )=>{
+router.delete("/deletePost/:id/:idPost" , async(req ,res )=>{
 
-    const _id = req.params.id;
-  
-    await PostMessage.findByIdAndDelete(_id);
-    res.json({message:"post delete successfully"});
+    const idPost = req.params.idPost;
+
+    try{
+        const user = await User.findById(req.params.id);
+        if(!user){
+            return res.status(404).send("User is not found");
+        }
+
+        await user.PostMessage.pull({_id:idPost});
+        await user.save();
+        res.status(201).send(user);
+
+    } catch (error){
+        res.status(500).send()
+    }
 
 })
 

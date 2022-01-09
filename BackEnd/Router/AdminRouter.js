@@ -168,27 +168,25 @@ router.delete("/deleteCity/:id", async (req,res) => {
   }
 })
 
+//delete please
+router.delete("/deletePleas/:idcity/:idplaese", async (req,res) => {
 
-router.delete("/deletePleas/:id", async (req,res) => {
-  try {
-    const city = await City.findById({_id:req.params.id});
-    if (city._id == req.params.id) {
+  const idplaese =req.params.idplaese;
+ 
+
       try {
-        await city.delete();
-        City.find({}).then((city)=>{
-          res.status(200).send(city)
-        })
-        
-      } catch (err) {
-        res.status(500).json(err);
+        const city = await City.findById(req.params.idcity)
+       
+        await city.places.pull({_id:idplaese})
+        await city.save();
+        res.status(201).send(city);
+        }
+       catch (err) {
+        res.status(500).send("not found");
       }
-    } else {
-      res.status(401).json("wrong city id");
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-})
+
+    
+  })
 
 
 
