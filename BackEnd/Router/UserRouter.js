@@ -213,19 +213,38 @@ router.post('/createPost/:id' , async (req , res)=>{
     }
 })
 
-router.put("/updatePost/:id", async(req , res )=>{
+router.put("/updatePost/:idPost", async(req , res )=>{
+ User.update({"PostMessage._id":req.params.idPost},
 
-    const _id = req.params.id;
-    const Updatepost = {
-        title : req.body.title,
-        message :req.body.message,
-        selectedFile :req.body.selectedFile
-    } ;
-    await PostMessage.findByIdAndUpdate(_id , Updatepost , {new:true});
-    res.json(Updatepost);
+    {
+     $set:{
+         "PostMessage.$.title":req.body.title,
+         "PostMessage.$.message":req.body.message,
+         "PostMessage.$.selectedFile":req.body.selectedFile
+     },
+    },
+
+    function(err){
+        if(err){
+          console.log(err)
+          return res.send(err)
+  
+        }
+      }
+ )
+ res.status(201).send("successfully")
    
 }) 
 
+
+router.delete("/deletePost/:id" , async(req ,res )=>{
+
+    const _id = req.params.id;
+  
+    await PostMessage.findByIdAndDelete(_id);
+    res.json({message:"post delete successfully"});
+
+})
 
 
 

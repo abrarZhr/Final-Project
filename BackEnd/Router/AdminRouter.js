@@ -169,7 +169,6 @@ router.delete("/deleteCity/:id", async (req,res) => {
 })
 
 
-
 router.delete("/deletePleas/:id", async (req,res) => {
   try {
     const city = await City.findById({_id:req.params.id});
