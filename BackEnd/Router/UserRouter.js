@@ -213,6 +213,19 @@ router.post('/createPost/:id' , async (req , res)=>{
     }
 })
 
+router.put("/updatePost/:id", async(req , res )=>{
+
+    const _id = req.params.id;
+    const Updatepost = {
+        title : req.body.title,
+        message :req.body.message,
+        selectedFile :req.body.selectedFile
+    } ;
+    await PostMessage.findByIdAndUpdate(_id , Updatepost , {new:true});
+    res.json(Updatepost);
+   
+}) 
+
 
 
 

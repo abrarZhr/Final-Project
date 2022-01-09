@@ -118,28 +118,7 @@ router.put("/place/:idcity/:idplaese", async (req,res) => {
   );
 
   const city = await City.findById(req.params.idcity);
-  res.status(201).send(city);
-
-    // try {
-    //   const pleac = await please.findById(req.params.id);
-    //   if (pleac.type === req.body.type) {
-    //     try {
-    //       const updatedCity = await please.findByIdAndUpdate(req.params.id, {
-    //           $set: req.body,
-    //         },
-    //         { new: true }
-    //       );
-    //       res.status(200).json(updatedCity);
-        
-    //     } catch (err) {
-    //       res.status(500).json(err);
-    //     }
-    //   } else {
-    //     res.status(401).json("You can update only your !");
-    //   }
-    // } catch (err) {
-    //   res.status(500).json(err);
-    // }
+  res.status(201).send(city);  
 })
 
 //done
@@ -188,6 +167,8 @@ router.delete("/deleteCity/:id", async (req,res) => {
     res.status(500).json(err);
   }
 })
+
+
 
 router.delete("/deletePleas/:id", async (req,res) => {
   try {
