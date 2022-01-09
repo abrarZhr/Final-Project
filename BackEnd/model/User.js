@@ -3,7 +3,8 @@ const {isEmail}=require('validator');
 const bcrypt =require("bcrypt");
 const Image = require('./Image').schema;
 const Schema=mongoose.Schema
-const PostMessage = require('./PostMessage').schema;
+const Post = require('./PostMessage').schema;
+
 
 
 
@@ -32,9 +33,8 @@ const UserSchema = new Schema({
         default:'user',
     },
 
-   
 
-    PostMessage :[PostMessage]
+    PostMessage :[Post]
 
 })
 

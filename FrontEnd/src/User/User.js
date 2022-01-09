@@ -1,30 +1,16 @@
 import axios from "axios";
 import React ,{ useEffect, useState } from "react";
-import "./UserStyle.js";
 import jwt_decode from "jwt-decode";
 import Button from 'react-bootstrap/Button'
 import NavBar from "../NavBar/NavBar";
-import Posts from '../User/Posts/Posts'
-import Form from '../User/Form/Form'
-
-// import UseStyles from './UserStyle'
-
-// import { useDispatch} from 'react-redux';
-// import {getPost} from '../actions/Posts';
 
 
 
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 
 
 const User = () => {
-  //  const dispatch = useDispatch();
-  // const Classes = UseStyles();
+ 
 
-  // useEffect(() => {
-  //  dispatch(getPost({}));
-    
-  // }, [])
 
 
   // const [loading , setLoading] =useState(true)
@@ -89,25 +75,9 @@ const User = () => {
     
 
  <>
-  {/* <NavBar></NavBar>
-  <Container maxWidth="lg">
-      <AppBar className={Classes.appBar} position="static" color="inherit">
-        <Typography className={Classes.heading} variant="h2" align="center">Memories</Typography>
-        </AppBar>
-      <Grow in>
-        <Container>
-          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-            <Grid item xs={12} sm={7}>
-              <Posts  />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form   />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow>
-    </Container>
-       */}
+   <NavBar></NavBar>
+ 
+       
 
 
 

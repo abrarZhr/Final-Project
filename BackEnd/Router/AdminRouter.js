@@ -64,7 +64,7 @@ router.post('/CreatePleace/:id' , async (req , res )=>{
     catch(e) {
         console.error(e)
     }
-    console.log("Add");
+    
 } )
 
 //get 

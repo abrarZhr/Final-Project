@@ -4,20 +4,27 @@ const mongoose = require('mongoose');
 const Schema=mongoose.Schema
 
 const PostMessage = new Schema({
-    title:String,
-    message:String,
-    creator:String,
-    tags :[String] ,
-    selectedFile :String ,
-    likeCount :{
-        type:Number,
-        default:0
+
+    title :{
+        type:String,
+        required:true
+
+    },
+    
+    message: {
+        type:String,
+        required:true
+    },
+ 
+    selectedFile : {
+       type:String ,
+        required:true
     },
 
     createdAt :{
         type :Date ,
-        default : new Date()
-
+        default : new Date(),
+      
     }
 
 })

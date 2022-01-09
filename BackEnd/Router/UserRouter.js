@@ -48,7 +48,7 @@ const PostMessage = require('../model/PostMessage');
 // });
 
 //Get user 
-router.get("/:id" , async (req , res)=>{
+router.get("/getUser/:id" , async (req , res)=>{
     try{
         const user = await User.findById(req.params.id);
         const {password , ...others}=user._doc;
@@ -56,7 +56,7 @@ router.get("/:id" , async (req , res)=>{
 
     }catch{
 
-        res.status(500).json(err)
+        res.status(500).json({err :"user is not found"});
     }
 })
 
@@ -170,9 +170,13 @@ router.delete("/:id" , async (req , res)=>{
 
 //memoris Router
 
-router.get('/' , async (req , res)=>{
+router.get("/getPost/:id" , async (req , res)=>{
     try {
-        const post = await PostMessage.find({});
+
+        // const post = await PostMessage.find({});
+        PostMessage.find({}).then((post)=>{
+            res.send(post)
+        })
 
         res.status(200).json(postMessage);
 
@@ -183,21 +187,33 @@ router.get('/' , async (req , res)=>{
 
 })
 
-router.post('/createPost' , async (req , res)=>{
-    const post = req.body;
-    const newPost = new PostMessage(post);
+router.post('/createPost/:id' , async (req , res)=>{
+    const _id = req.params.id;
+    const post =  await User.findById(req.params.id)
+
+    const newPost = new PostMessage ({
+        title : req.body.title,
+        message :req.body.message,
+        selectedFile :req.body.selectedFile,
+        createdAt : req.body.createdAt
+    })
+
+ 
+
+    post.PostMessage.push(newPost)
 
     try{
-     await newPost.save(); 
-     res.status(201).json(newPost)
-
+     await post.save(); 
+     res.status(201)
+     res.send(post)
 
     } catch(error){
         res.status(404).json({message:error.message});
 
     }
-
 })
+
+
 
 
 
