@@ -158,7 +158,7 @@ const Admin = () => {
 
   //update
   function update(Id) {
-    console.log("000000")
+    
     axios.put(`http://localhost:5000/app/admin/city/${Id}`,
       {
 

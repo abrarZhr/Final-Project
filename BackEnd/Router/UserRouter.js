@@ -173,7 +173,7 @@ router.delete("/:id" , async (req , res)=>{
 router.get("/getPost/:id" , async (req , res)=>{
     try {
 
-        // const post = await PostMessage.find({});
+        const post = await PostMessage.find({});
         PostMessage.find({}).then((post)=>{
             res.send(post)
         })

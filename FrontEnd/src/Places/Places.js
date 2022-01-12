@@ -8,6 +8,7 @@ import { Modal , Form  , FloatingLabel} from 'react-bootstrap';
 import './Places.css'
 import Aos from "aos"
 import "aos/dist/aos.css"
+import Upload from '../UplodeFile/Uplode'
 
 const Places = ()=>{
 
@@ -24,6 +25,7 @@ const Places = ()=>{
      const [descriptionte, setdes] = useState()
      const [location, setlocation] = useState()
      const{cityId,category}=useParams()
+
      
    
     
@@ -71,11 +73,10 @@ const Places = ()=>{
  <>
 
 <FloatingLabel
-controlId="floatingInput"
-label="Image"
-className="mb-3"
+ 
 >
-<Form.Control  type="text" onChange={(e)=>setimge(e.target.value)} placeholder="image of place" />
+
+<Upload setimge={setimge}/>
 </FloatingLabel>
 
 <FloatingLabel 
