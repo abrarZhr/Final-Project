@@ -148,6 +148,16 @@ className="mb-3"
     }
   
 
+    const deletePleas =  (e,_id)=>{
+        e.preventDefault()
+        axios.delete(`http://localhost:5000/app/admin/deletePleas/${cityId}/${_id}`)
+        .then ((res)=>{
+            console.log(res.data)
+            setPlease(res.data.places)
+        })
+
+    }
+
 
 
     return(
@@ -197,6 +207,7 @@ className="mb-3"
                                    loading="lazy"
                                    >
                                    </iframe>
+                                   <Button onClick={(e) => deletePleas(e,ele._id)}> Delete</Button>
 
                                  
                                  

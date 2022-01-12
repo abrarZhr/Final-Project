@@ -24,8 +24,7 @@ function Uplode ({setimge}) {
  
     return (
         <div className='Uploade'>
-            <input  type="file"  onChange={(e)=>{setimageSelected(e.target.files[0])}}></input>
-
+            <input type="file" onChange={(e)=>{setimageSelected(e.target.files[0])}}></input>
             <Button onClick={uploadImage}>Upload Image</Button>
             {/* <Image cloudName="city-tourse" publicId="" /> */}
         </div>
