@@ -173,12 +173,11 @@ router.delete("/:id" , async (req , res)=>{
 router.get("/getPost/:id" , async (req , res)=>{
     try {
 
-        const post = await PostMessage.find({});
-        PostMessage.find({}).then((post)=>{
-            res.send(post)
-        })
+        const _id = req.params.id;
+        const user =  await User.findById(req.params.id)
 
-        res.status(200).json(postMessage);
+            res.send(user.PostMessage)
+        
 
     } catch (error) {
         res.status(404).json({message:error.message});
