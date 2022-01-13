@@ -1,0 +1,73 @@
+.bodyPost{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+
+
+.CardPosr{
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 200px 50px;
+    border-radius: 10px;
+    /* background:wheat; */
+    box-shadow: 5px 5px 15px rgba(0,0,0,0,9);
+    text-align: center;
+    margin: 10px;
+  
+  
+
+}
+
+
+
+
+.but{
+    grid-area: text;
+    margin: 25px;
+
+}
+
+.listofpost {
+    display: grid;
+    text-align: center;
+    margin: 50px;
+    height: 70px;
+    width: 80px;
+
+
+}
+
+.post{
+ 
+    
+    
+}
+
+
+ .special-heading{
+    color: #ebeced;
+    font-size: 100px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -3px;
+    margin: 0;
+    
+
+}
+
+.special-heading + p{
+    text-align: center;
+    color: #020202;
+    margin: -30px 0 0;
+}
+
+  
+/* 
+.TitleHeder{
+    padding-top: 60px;
+    padding-bottom: 6px;
+} */

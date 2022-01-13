@@ -3,8 +3,10 @@ import React ,{ useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import Button from 'react-bootstrap/Button'
 import NavBar from "../NavBar/NavBar";
-import { Card , Form } from 'react-bootstrap';
+import './User.css'
 import Upload from '../UplodeFile/Uplode'
+import { RiDeleteBin5Fill } from "react-icons/ri";
+
 
 
 
@@ -57,7 +59,8 @@ const User = () => {
     date : date
   })
   .then((res)=>{
-    setPost(res.data)
+    console.log(res.date)
+    setPost(res.data.PostMessage)
   })
 
  }
@@ -66,7 +69,8 @@ const User = () => {
   e.preventDefault()
   axios.delete(`http://localhost:5000/app/user/deletePost/${tokenId}/${_id}`)
   .then((res)=>{
-    setPost(res.date)
+    console.log(res.data)
+    setPost(res.data.PostMessage)
   })
 
  }
@@ -123,46 +127,48 @@ const User = () => {
 
   return ( 
      
-   
-    
-
  <>
    <NavBar></NavBar>
 
+   <div className="TitleHeder">
+ <div className="conn">
+ 
+     <h2 className="special-heading"> Memoris</h2>
+     <p>The Kingdom of Saudi Arabia contains ma ished</p>
+ </div>
+ </div>
+   <div className="bodyPost">
+
    {Post.map((ele)=>{
      return(
-       <div className="CardPosr">
-
-  <img src={ele.selectedFile}></img>
-    {ele.title}
-    {ele.date}
-     <Button onClick={(e)=> DeletePost(e,ele._id)}>Delete</Button>
+       <>
+      <div className="CardPosr">
+      <div className="card-image"><img src={ele.selectedFile}></img></div>
+      <div className="card-text">{ele.title} </div>
+      <div className="card-message">{ele.message}</div>
+      <div className="card-date">{ele.date}</div>
+      <Button onClick={(e)=> DeletePost(e,ele._id)}><RiDeleteBin5Fill/></Button>
   </div>
+  
 
-
+</>
 )
    })}  
 
-          
+   
+          <div className="post">
           
           <div className='listofpost'>
                     
           <input onChange={(e) => settitle(e.target.value)} placeholder='Title'></input> {' '}
           <input onChange={(e)=> setmessage(e.target.value)} placeholder='Message'></input> {' '}
-          {/* <input className='updateInput'> </input> {' '} */}
           <input onChange={(e)=> setdate(e.target.value)} placeholder='Date'></input> {' '}
+          <Upload setimge={setselectedFile}/> <br></br>
           <Button onClick={(e)=> AddPost(e)}> Add memoris</Button>
           </div>
-                    
-
-  
-
-
-
-
-
-
-
+          </div>
+          </div>
+         
   </>
   );
   
