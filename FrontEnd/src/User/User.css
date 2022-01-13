@@ -1,23 +1,24 @@
 .bodyPost{
     
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* align-items: center;
     justify-content: center;
-  
+   */
 }
 
 
 
 .CardPosr{
-    display: grid;
-    grid-template-columns: 300px;
-    grid-template-rows: 200px 50px;
+ 
     border-radius: 10px;
     /* background:wheat; */
-    box-shadow: 5px 5px 15px rgba(0,0,0,0,9);
-    text-align: center;
     margin: 10px;
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: blueviolet solid;
   
 
 }
@@ -42,8 +43,11 @@
 }
 
 .post{
- 
-    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
 }
 

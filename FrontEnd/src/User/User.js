@@ -154,6 +154,8 @@ const User = () => {
 </>
 )
    })}  
+ 
+         
 
    
           <div className="post">
@@ -168,7 +170,6 @@ const User = () => {
           </div>
           </div>
           </div>
-         
   </>
   );
   
